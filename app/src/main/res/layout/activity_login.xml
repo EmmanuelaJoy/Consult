@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="#ffff"
     tools:context=".ui.LoginActivity">
+
     <ImageView
         android:layout_width="500dp"
-        android:layout_height="350dp"
+        android:layout_height="250dp"
         android:src="@drawable/image"/>
 
     <TextView
@@ -22,10 +24,12 @@
         android:letterSpacing="0.03"/>
 
     <EditText
+        android:id="@+id/login_email"
         android:layout_width="350dp"
         android:layout_height="45dp"
         android:background="@drawable/forget"
         android:text="Email"
+        android:layout_gravity="center_horizontal"
         android:textColor="#191970"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -33,10 +37,12 @@
         android:paddingLeft="20dp"/>
 
     <EditText
+        android:id="@+id/login_password"
         android:layout_width="350dp"
         android:layout_height="45dp"
         android:background="@drawable/forget"
         android:text="Password"
+        android:layout_gravity="center_horizontal"
         android:textColor="#191970"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -44,6 +50,7 @@
         android:paddingLeft="20dp"/>
 
     <TextView
+        android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forget Password?"
@@ -53,16 +60,19 @@
 
 
     <Button
+        android:id="@+id/loginbtn"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:background="@drawable/button"
         android:text="Login"
+        android:layout_gravity="center_horizontal"
         android:textSize="18dp"
         android:textStyle="bold"
         android:textColor="#FFF"
         android:layout_marginTop="20dp"/>
 
     <TextView
+        android:id="@+id/logintxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don't have an account? Sign Up"
@@ -70,5 +80,16 @@
         android:textStyle="bold"
         android:textSize="18dp"
         android:layout_marginTop="15dp"/>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logintxt"
+        app:layout_constraintVertical_bias="0.39" />
 
 </LinearLayout>
