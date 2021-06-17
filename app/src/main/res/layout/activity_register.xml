@@ -64,6 +64,7 @@
         android:layout_height="45dp"
         android:background="@drawable/forget"
         android:text="Password"
+        android:inputType="textPassword"
         android:textColor="#191970"
         android:textStyle="bold"
         android:textSize="18dp"
