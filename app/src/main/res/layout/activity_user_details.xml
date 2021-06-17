@@ -60,7 +60,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="280dp"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:layout_gravity="center"
             android:alpha="0.9"
             android:backgroundTint="@color/colorOnPrimary"
@@ -71,7 +71,7 @@
                 android:id="@+id/displayName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Name"
                 android:textAlignment="center"
@@ -81,10 +81,11 @@
                 android:id="@+id/displayUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Name"
+                android:text="Email"
                 android:textAlignment="center"
+                android:layout_marginTop="40dp"
                 android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
