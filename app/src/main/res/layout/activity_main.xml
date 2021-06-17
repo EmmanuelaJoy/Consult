@@ -1,61 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    tools:context=".ui.MainActivity"
-    android:background="#ffff">
+    tools:context=".ui.MainActivity">
 
-
-
-    <ImageView
-        android:layout_width="500dp"
-        android:layout_height="250dp"
-        android:src="@drawable/image"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textColor="#191970"
-        android:textSize="45dp"
-        android:textStyle="bold"
-        android:layout_marginTop="30dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create a new account"
-        android:textColor="#191970"
-        android:textSize="16dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/main_login"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:background="@drawable/button"
-        android:text="Login"
-        android:layout_gravity="center_horizontal"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="#FFF"
-        android:layout_marginTop="20dp"/>
-
-    <Button
-        android:id="@+id/main_reg"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:background="@drawable/button"
-        android:text="Register"
-        android:layout_gravity="center_horizontal"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="#FFF"
-        android:layout_marginTop="10dp"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
