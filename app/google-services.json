@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "561788956229",
+    "project_id": "consult-fb864",
+    "storage_bucket": "consult-fb864.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561788956229:android:e5d404d92c929377dc3d2c",
+        "android_client_info": {
+          "package_name": "com.moringaschool.consult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561788956229-nlvd6csabtqdiv5msnldcdok785p6sb8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5xm5v-7GzikoUrMHtgWy2_Km-zaN9ops"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561788956229-nlvd6csabtqdiv5msnldcdok785p6sb8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
