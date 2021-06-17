@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText mFullName,mEmail,mPassword,mPhone;
     Button mRegisterBtn;
-//    TextView mCreateTxt;
+    TextView mCreateTxt;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         mPhone      = findViewById(R.id.reg_phone);
         mRegisterBtn= findViewById(R.id.reg_btn);
         mLoginBtn   = findViewById(R.id.loginbtn);
-//        mCreateTxt = findViewById(R.id.createText);
+        mCreateTxt = findViewById(R.id.createText);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -66,12 +66,12 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
         }
-//        mCreateTxt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(),   LoginActivity.class));
-//            }
-//        });
+        mCreateTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),   LoginActivity.class));
+            }
+        });
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
