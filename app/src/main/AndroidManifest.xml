@@ -10,13 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Consult">
         <activity android:name=".ui.MainActivity">
-        <activity android:name=".ResetPasswordActivity"
-            android:parentActivityName=".LoginActivity"/>
-        <activity android:name=".MessageActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".StartActivity">
+<!--        <activity android:name=".ResetPasswordActivity" />-->
+<!--        <activity android:name=".MainActivity" />-->
+<!--        <activity android:name=".LoginActivity" />-->
+<!--        <activity android:name=".RegisterActivity" />-->
+<!--        <activity android:name=".StartActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
