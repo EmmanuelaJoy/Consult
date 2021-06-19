@@ -9,11 +9,12 @@
     <color name="colorSecondaryText">#FFFFFF</color>
     <color name="colorDivider">#877E7F</color>
     <color name="colorButtons">#C4C4C4</color>
+    <color name="colorTransparent">#00000000</color>
     <!-- Theme colors -->
     <color name="colorPrimaryVariant">#203354</color>
     <color name="colorOnPrimary">#395185</color>
-    <color name="colorSecondary">#ff9800</color>
-    <color name="colorSecondaryVariant">#ff9800</color>
-    <color name="colorOnSecondary">#f469a9</color>
+    <color name="colorSecondary">#395A93</color>
+    <color name="colorSecondaryVariant">#395A93</color>
+    <color name="colorOnSecondary">#1976D2</color>
 
 </resources>
