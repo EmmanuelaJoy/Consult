@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.WelcomeActivity"
-    android:background="#ffff">
+    android:background="@color/colorSecondaryText">
 
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -22,54 +22,55 @@
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="WELCOME"
-        android:textColor="#191970"
+        android:textColor="@color/colorPrimary"
         android:textSize="40dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"/>
+        app:layout_constraintVertical_bias="0.05" />
+
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="450dp"
+        android:layout_width="350dp"
         android:layout_height="250dp"
-        android:layout_marginTop="40dp"
-        android:scaleType="fitCenter"
+        android:layout_marginTop="30dp"
+        android:padding="20dp"
+        android:scaleType="centerInside"
         android:src="@drawable/ic_welcome"
-        app:layout_constraintBottom_toTopOf="@id/main_login"
+        app:layout_constraintBottom_toTopOf="@+id/main_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <Button
         android:id="@+id/main_login"
-        android:layout_width="290dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/button"
         android:text="LOG IN"
         android:textColor="#FFF"
         android:textSize="18dp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/main_reg"
-        android:layout_width="290dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:background="@drawable/button"
+        android:backgroundTint="@color/colorPrimaryLight"
         android:text="SIGN UP"
-        android:textColor="#FFF"
+        android:textColor="@color/colorPrimaryText"
         android:textSize="18dp"
-        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/main_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
