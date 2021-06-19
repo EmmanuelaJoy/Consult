@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.UserDetails"></activity>
+        <activity android:name=".ui.UserProfile" />
         <activity android:name=".ui.MainActivity"></activity>
         <activity android:name=".ui.LoginActivity" android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.RegisterActivity"  android:theme="@style/NoActionBarTheme" />
@@ -19,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
