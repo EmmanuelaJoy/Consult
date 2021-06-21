@@ -28,7 +28,31 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
-
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.homeM:
+                        return true;
+                    case R.id.tasksM:
+                        startActivity(new Intent(getApplicationContext(), TasksActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.profileM:
+                        startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                        overridePendingTransition(0,0);
+                }
+                return false;
+            }
+        });
     }
 
+    @Override
+    public void onBackPressed() {
+        if(bottomNavigationView.getSelectedItemId()== R.id.homeM){
+            super.onBackPressed();
+            finish();
+        }
+
+    }
 }
