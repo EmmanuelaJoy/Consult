@@ -1,5 +1,7 @@
 <resources>
+
     <string name="forward">forward</string>
     <string name="back">back</string>
     <string name="app_name">Consʌlt</string>
+
 </resources>
