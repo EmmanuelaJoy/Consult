@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Consult">
+        <activity android:name=".ui.TasksActivity"></activity>
+        <activity android:name=".ui.WeekViewActivity" />
+        <activity android:name=".ui.EventEditActivity" />
         <activity android:name=".ui.UserDetails">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -26,6 +29,7 @@
         <activity android:name=".ui.LoginActivity" android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.RegisterActivity"  android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.WelcomeActivity"  android:theme="@style/NoActionBarTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

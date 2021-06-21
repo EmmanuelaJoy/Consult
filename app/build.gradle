@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.moringaschool.consult"
-        minSdkVersion 21
+        minSdkVersion 27
         versionCode 1
         versionName "1.0"
 
