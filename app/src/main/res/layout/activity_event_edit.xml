@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorSecondaryText"
         android:background="@null"
         android:textStyle="bold"
         android:onClick="saveEventAction"
