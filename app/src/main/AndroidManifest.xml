@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moringaschool.consult">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,13 +34,14 @@
         <activity android:name=".ui.LoginActivity" android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.RegisterActivity"  android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.WelcomeActivity"  android:theme="@style/NoActionBarTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ChatRoom"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
