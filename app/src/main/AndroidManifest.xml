@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moringaschool.consult">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,18 +15,8 @@
                 android:value="com.moringaschool.consult.ui.Dashboard">
             </meta-data>
         </activity>
-        <activity android:name=".ui.WeekViewActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.consult.ui.TasksActivity">
-            </meta-data>
-        </activity>
-        <activity android:name=".ui.EventEditActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.consult.ui.WeekViewActivity">
-            </meta-data>
-        </activity>
+        <activity android:name=".ui.WeekViewActivity" />
+        <activity android:name=".ui.EventEditActivity" />
         <activity android:name=".ui.UserDetails">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,6 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ChatRoom"></activity>
+
 
         <meta-data
             android:name="preloaded_fonts"
