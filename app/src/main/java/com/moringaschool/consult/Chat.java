@@ -20,15 +20,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChatRoom extends AppCompatActivity {
 
+public class Chat extends AppCompatActivity {
     String roomName, userName, createDate;
     LinearLayout chatView;
     FirebaseDatabase database;
@@ -40,22 +39,17 @@ public class ChatRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
-
         roomName = getIntent().getStringExtra("room");
         userName = getIntent().getStringExtra("user").toUpperCase();
         createDate = getIntent().getStringExtra("date");
-
         getSupportActionBar().setTitle(roomName.toUpperCase());
         getSupportActionBar().setSubtitle(createDate);
-
         chatView = findViewById(R.id.chatView);
         msg = findViewById(R.id.msg);
         send = findViewById(R.id.sendbtn);
         sv = findViewById(R.id.topView);
-
         database = FirebaseDatabase.getInstance();
         dbRef = database.getReference("rooms").child(roomName).child("chats");
-
         DatabaseReference chat = dbRef.push();
         Map<String,Object> objectMap = new HashMap<String, Object>();
         objectMap.put("uname","joined");
@@ -63,34 +57,26 @@ public class ChatRoom extends AppCompatActivity {
         objectMap.put("tstamp",new SimpleDateFormat("dd MMM yyy, h:mm:ss a").format(new Date()).toString());
         chat.updateChildren(objectMap);
         scrollToBottom();
-
         dbRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 updateChatList(dataSnapshot);
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 updateChatList(dataSnapshot);
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 updateChatList(dataSnapshot);
             }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,16 +93,12 @@ public class ChatRoom extends AppCompatActivity {
                 }
             }
         });
-
     }
-
     private void updateChatList(DataSnapshot dataSnapshot) {
         LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         lparams.setMargins(10,5,10,5);
-
         TextView tv=new TextView(this);
-
         if(String.valueOf(dataSnapshot.child("uname").getValue()).equalsIgnoreCase(userName))
         {
             tv.setPadding(10,10,10,10);
@@ -134,7 +116,6 @@ public class ChatRoom extends AppCompatActivity {
             String s = "<i>"+(String)dataSnapshot.child("message").getValue()+"</i>";
             tv.setText(Html.fromHtml(s));
         }
-
         else
         {
             tv.setPadding(10,10,10,10);
@@ -144,12 +125,9 @@ public class ChatRoom extends AppCompatActivity {
             tv.setText(Html.fromHtml(s));
         }
         tv.setLayoutParams(lparams);
-
         chatView.addView(tv);
         scrollToBottom();
-
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -161,7 +139,6 @@ public class ChatRoom extends AppCompatActivity {
         chat.updateChildren(objectMap);
         Toast.makeText(getApplicationContext(),"You have left the room", Toast.LENGTH_LONG).show();
     }
-
     private  String formatDate(String timeStamp)
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyy, h:mm:ss a");

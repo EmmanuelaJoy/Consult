@@ -32,6 +32,8 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.core:core-ktx:1.5.0'
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.github.marlonlom:timeago:4.0.3'
 
     //noinspection GradleCompatible

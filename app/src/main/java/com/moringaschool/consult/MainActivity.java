@@ -114,13 +114,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                joinChatRoom(position);
+                joinChat(position);
 
             }
         });
     }
 
-    private void joinChatRoom(final int position) {
+    private void joinChat(final int position) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
         LayoutInflater inflater = this.getLayoutInflater();
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                startActivity(new Intent(getBaseContext(),ChatRoom.class)
+                startActivity(new Intent(getBaseContext(),Chat.class)
                         .putExtra("room",roomModelArrayList.get(position).getName())
                         .putExtra("date",roomModelArrayList.get(position).getCreateDate())
                         .putExtra("user",user.getText().toString())
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 map.put("chats","");
                 roomRef.updateChildren(map);
 
-                startActivity(new Intent(getBaseContext(),ChatRoom.class)
+                startActivity(new Intent(getBaseContext(),Chat.class)
                         .putExtra("room",room.getText().toString())
                         .putExtra("date",format.format(new Date()))
                         .putExtra("user",user.getText().toString())
