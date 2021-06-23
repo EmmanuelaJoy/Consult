@@ -5,6 +5,11 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.consult.R;
 
 import android.content.Intent;
@@ -84,6 +89,10 @@ public class RegisterActivity extends AppCompatActivity {
                     mEmail.setError("Email is Required.");
                     return;
                 }
+                if(TextUtils.isEmpty(email)){
+                    mFullName.setError("Name is Required.");
+                    return;
+                }
 
                 if(TextUtils.isEmpty(password)){
                     mPassword.setError("Password is Required.");
@@ -103,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-
+                            ValidatephoneNumber(fullName,phone,password);
                             // send verification link
 
                             FirebaseUser fuser = fAuth.getCurrentUser();
@@ -149,5 +158,55 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void ValidatephoneNumber(String fullName,String phone,String password){
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!(dataSnapshot.child("Users").child(phone).exists()))
+                {
+                    HashMap<String,Object>userdataMap = new HashMap<>();
+                    userdataMap.put("phone",phone);
+                    userdataMap.put("password",password);
+                    userdataMap.put("name",fullName);
+
+                    RootRef.child("Users").child(phone).updateChildren(userdataMap)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull  Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        Toast.makeText(RegisterActivity.this,"Congratulations,your account has been created",Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                        Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    else{
+                                        Toast.makeText(RegisterActivity.this,"Network Error:Please try again after some time...",Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
+                }
+                else{
+                    Toast.makeText(RegisterActivity.this,"This"+ phone + "already exists",Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(RegisterActivity.this,"Please try again using another phone number",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this,WelcomeActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

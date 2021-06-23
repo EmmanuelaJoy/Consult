@@ -1,10 +1,12 @@
 package com.moringaschool.consult.ui;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class TasksActivity extends AppCompatActivity implements CalendarAdapter.
     private RecyclerView calendarRecyclerView;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -54,12 +57,14 @@ public class TasksActivity extends AppCompatActivity implements CalendarAdapter.
         calendarRecyclerView.setAdapter(calendarAdapter);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void previousMonthAction(View view)
     {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
         setMonthView();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextMonthAction(View view)
     {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusMonths(1);
@@ -78,7 +83,7 @@ public class TasksActivity extends AppCompatActivity implements CalendarAdapter.
 
     public void weeklyAction(View view)
     {
-        startActivity(new Intent(this, WeekViewActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 }
 
