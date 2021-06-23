@@ -1,4 +1,4 @@
-package com.moringaschool.consult;
+package com.moringaschool.consult.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,8 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
+import com.moringaschool.consult.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         prompt = findViewById(R.id.empty_prompt);
         database = FirebaseDatabase.getInstance();
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                startActivity(new Intent(getBaseContext(),ChatRoom.class)
+                startActivity(new Intent(getBaseContext(), ChatRoom.class)
                         .putExtra("room",roomModelArrayList.get(position).getName())
                         .putExtra("date",roomModelArrayList.get(position).getCreateDate())
                         .putExtra("user",user.getText().toString())

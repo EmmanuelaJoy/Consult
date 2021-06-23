@@ -1,30 +1,27 @@
 package com.moringaschool.consult.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.moringaschool.consult.R;
 
 public class Dashboard extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    MenuItem home;
-    MenuItem tasks;
-    MenuItem page;
-    MenuItem profile;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        floatingActionButton.findViewById(R.id.chatButton);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
@@ -41,8 +38,17 @@ public class Dashboard extends AppCompatActivity {
                     case R.id.profileM:
                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
                         overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
+            }
+        });
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ChatRoom.class));
+                overridePendingTransition(0,0);
             }
         });
     }
