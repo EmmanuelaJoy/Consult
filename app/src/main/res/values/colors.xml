@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="colorPrimary">#003060</color>
     <color name="colorPrimaryDark">#395A93</color>
     <color name="colorPrimaryLight">#E8EEFE</color>
@@ -15,7 +14,6 @@
     <color name="colorPrimaryVariant">#203354</color>
     <color name="colorOnPrimary">#395185</color>
     <color name="colorSecondary">#395A93</color>
-    <color name="colorSecondaryVariant">#395A93</color>
+    <color name="colorSecondaryVariant">#FBFCFE</color>
     <color name="colorOnSecondary">#1976D2</color>
-
 </resources>
