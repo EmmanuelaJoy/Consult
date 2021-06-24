@@ -10,13 +10,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.moringaschool.consult.R;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import static com.moringaschool.consult.ui.CalendarUtils.daysInMonthArray;
 import static com.moringaschool.consult.ui.CalendarUtils.monthYearFromDate;
@@ -83,7 +80,7 @@ public class TasksActivity extends AppCompatActivity implements CalendarAdapter.
 
     public void weeklyAction(View view)
     {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, TaskActivity.class));
     }
 }
 

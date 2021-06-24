@@ -16,7 +16,7 @@
 
         <activity android:name=".ui.WeekViewActivity" />
         <activity android:name=".ui.EventEditActivity" />
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.TaskActivity" />
         <activity
             android:name=".ui.LoginActivity"
             android:theme="@style/NoActionBarTheme" />

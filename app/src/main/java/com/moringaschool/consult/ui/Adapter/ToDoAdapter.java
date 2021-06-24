@@ -10,14 +10,13 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.moringaschool.consult.R;
 import com.moringaschool.consult.ui.AddNewTask;
-import com.moringaschool.consult.ui.MainActivity;
+import com.moringaschool.consult.ui.TaskActivity;
 import com.moringaschool.consult.ui.Model.ToDoModel;
 
 import java.util.List;
@@ -25,12 +24,12 @@ import java.util.List;
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> {
 
     private List<ToDoModel> todoList;
-    private MainActivity activity;
+    private TaskActivity activity;
     private FirebaseFirestore firestore;
 
-    public ToDoAdapter(MainActivity mainActivity , List<ToDoModel> todoList){
+    public ToDoAdapter(TaskActivity taskActivity, List<ToDoModel> todoList){
         this.todoList = todoList;
-        activity = mainActivity;
+        activity = taskActivity;
     }
 
     @NonNull

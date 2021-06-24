@@ -24,10 +24,9 @@ import com.moringaschool.consult.ui.Adapter.ToDoAdapter;
 import com.moringaschool.consult.ui.Model.ToDoModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnDialogCloseListner{
+public class TaskActivity extends AppCompatActivity implements OnDialogCloseListner{
 
     private RecyclerView recyclerView;
     private FloatingActionButton mFab;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         firestore = FirebaseFirestore.getInstance();
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(TaskActivity.this));
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         });
 
         mList = new ArrayList<>();
-        adapter = new ToDoAdapter(MainActivity.this , mList);
+        adapter = new ToDoAdapter(TaskActivity.this , mList);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new TouchHelper(adapter));
         itemTouchHelper.attachToRecyclerView(recyclerView);
