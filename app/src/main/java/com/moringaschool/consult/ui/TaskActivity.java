@@ -40,7 +40,7 @@ public class TaskActivity extends AppCompatActivity implements OnDialogCloseList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_task);
 
         recyclerView = findViewById(R.id.recycerlview);
         mFab = findViewById(R.id.floatingActionButton);
