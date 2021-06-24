@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".2"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/onlinedoctor" />
+        app:lottie_rawRes="@raw/healthsymbols" />
 
     <LinearLayout
         android:id="@+id/tab1"
@@ -122,6 +122,7 @@
         app:layout_constraintWidth_percent=".7" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/next2"
         android:layout_width="250dp"
         android:layout_height="55dp"
         android:fontFamily="@font/poppins_bold"

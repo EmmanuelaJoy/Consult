@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.button.MaterialButton;
 import com.moringaschool.consult.R;
 import com.moringaschool.consult.models.IntroductionFragment1;
 import com.moringaschool.consult.models.IntroductionFragment2;
@@ -26,6 +27,7 @@ public class SplashScreen extends AppCompatActivity {
 
     TextView appName, info;
     ImageView background;
+    MaterialButton next1, next2, getStartedB;
     public static final int num_pages = 3;
     private ViewPager viewPager;
     private ScreenSlidePagerAdapter pagerAdapter;
