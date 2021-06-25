@@ -8,13 +8,15 @@ public class Event
 {
     public static ArrayList<Event> eventsList = new ArrayList<>();
 
+
+
     public static ArrayList<Event> eventsForDate(LocalDate date)
     {
         ArrayList<Event> events = new ArrayList<>();
 
         for(Event event : eventsList)
         {
-            if(event.getDate().equals(date))
+            if(event.getEventDate().equals(date))
                 events.add(event);
         }
 
@@ -22,45 +24,47 @@ public class Event
     }
 
 
-    private String name;
-    private LocalDate date;
-    private LocalTime time;
+    private String eventName;
+    private LocalDate eventDate;
+    private LocalTime eventTime;
 
-    public Event(String name, LocalDate date, LocalTime time)
+    public Event(String eventName, LocalDate eventDate, LocalTime eventTime)
     {
-        this.name = name;
-        this.date = date;
-        this.time = time;
+        this.eventName = eventName ;
+        this.eventDate = eventDate;
+        this.eventTime = eventTime;
     }
 
-    public String getName()
-    {
-        return name;
+    public static ArrayList<Event> getEventsList() {
+        return eventsList;
     }
 
-    public void setName(String name)
-    {
-        this.name = name;
+    public static void setEventsList(ArrayList<Event> eventsList) {
+        Event.eventsList = eventsList;
     }
 
-    public LocalDate getDate()
-    {
-        return date;
+    public String getEventName() {
+        return eventName;
     }
 
-    public void setDate(LocalDate date)
-    {
-        this.date = date;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
-    public LocalTime getTime()
-    {
-        return time;
+    public LocalDate getEventDate() {
+        return eventDate;
     }
 
-    public void setTime(LocalTime time)
-    {
-        this.time = time;
+    public void setEventDate(LocalDate eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public LocalTime getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(LocalTime eventTime) {
+        this.eventTime = eventTime;
     }
 }
 

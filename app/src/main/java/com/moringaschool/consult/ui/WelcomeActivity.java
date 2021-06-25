@@ -12,7 +12,7 @@ import com.moringaschool.consult.R;
 
 public class WelcomeActivity extends AppCompatActivity {
     Button mLoginBtn;
-    Button mRegisterBtn;
+    Button RegisterBtn;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -21,7 +21,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         mLoginBtn = findViewById(R.id.main_login);
-        mRegisterBtn = findViewById(R.id.main_reg);
+        RegisterBtn = findViewById(R.id.main_reg);
 
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -30,7 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),LoginActivity.class));
             }
         });
-        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+        RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WelcomeActivity.this, RegisterActivity.class);
