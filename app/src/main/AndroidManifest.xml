@@ -21,6 +21,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.TaskActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.consult.ui.TasksActivity">
+            </meta-data>
+        </activity>
+
         <activity android:name=".ui.TasksActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,8 +48,13 @@
                 android:value="com.moringaschool.consult.ui.Dashboard">
             </meta-data>
         </activity>
-        <activity android:name=".ui.Dashboard"></activity>
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".ui.Dashboard"/>
+        <activity android:name=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.consult.ui.Dashboard">
+            </meta-data>
+        </activity>
         <activity android:name=".ui.LoginActivity" android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.RegisterActivity"  android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.WelcomeActivity"  android:theme="@style/NoActionBarTheme">
