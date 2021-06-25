@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorSecondaryVariant"
+    tools:context=".ui.TasksActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Tasks"
+        android:layout_marginTop="5dp"
+        android:textColor="#fff"
+        android:background="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:onClick="weeklyAction"
+        android:textSize="20sp"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_chevron_left_24"
+                    android:onClick="previousMonthAction" />
+
+                <TextView
+                    android:id="@+id/monthYearTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:text="Feb 2021"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_chevron_right_24"
+                    android:onClick="nextMonthAction" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SUN"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textAlignment="center"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="MON"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textAlignment="center"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TUE"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textAlignment="center"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WED"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textAlignment="center"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="THUR"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textAlignment="center"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="FRI"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textAlignment="center"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SAT"
+                    android:fontFamily="@font/ubuntu_medium"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textAlignment="center"
+                    android:textSize="14sp"/>
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/calendarRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

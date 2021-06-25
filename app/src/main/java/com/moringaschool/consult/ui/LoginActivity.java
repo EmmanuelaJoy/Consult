@@ -5,10 +5,12 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.moringaschool.consult.R;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText mEmail,mPassword;
+    TextInputEditText mEmail,mPassword;
     Button mLoginBtn;
     TextView mCreateBtn,forgotTextLink;
     ProgressBar progressBar;
@@ -48,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         mCreateBtn = findViewById(R.id.logintxt);
         forgotTextLink = findViewById(R.id.forgot_password);
 
+        //format sign up message
+//        String text = "<font color=#212121>Don't have an account?</font> <font color=#1976D2>Sign Up</font>";
+//        mCreateBtn.setText(text);
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +85,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+                           startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                            progressBar.setVisibility(View.GONE);
+
                         }else {
                             Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);

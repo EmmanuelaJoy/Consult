@@ -14,7 +14,6 @@
     <color name="colorPrimaryVariant">#203354</color>
     <color name="colorOnPrimary">#395185</color>
     <color name="colorSecondary">#395A93</color>
-    <color name="colorSecondaryVariant">#395A93</color>
+    <color name="colorSecondaryVariant">#FBFCFE</color>
     <color name="colorOnSecondary">#1976D2</color>
-
 </resources>
