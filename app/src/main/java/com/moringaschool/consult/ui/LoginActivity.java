@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.moringaschool.consult.R;
 
 import android.content.DialogInterface;
@@ -35,9 +37,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText mEmail,mPassword;
-    EditText mPhone;
-    Button mLoginBtn;
+    TextInputEditText mEmail,mPassword;
+    TextInputEditText mPhone;
+    MaterialButton mLoginBtn;
     TextView mCreateBtn,forgotTextLink,AdminLink,NotAdminLink;
     CheckBox chkBoxRememberMe;
     ProgressBar progressBar;
@@ -48,12 +50,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.loginpage);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         mEmail = findViewById(R.id.login_email);
         mPassword = findViewById(R.id.login_password);
-        mPhone = (EditText) findViewById(R.id.reg_phone);
+        mPhone = findViewById(R.id.reg_phone);
         progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.loginbtn);
