@@ -14,14 +14,12 @@ import com.moringaschool.consult.R;
 public class Dashboard extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        floatingActionButton.findViewById(R.id.chatButton);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
@@ -44,13 +42,11 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ChatRoom.class));
-                overridePendingTransition(0,0);
-            }
-        });
+    }
+
+    public void message(View view){
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        overridePendingTransition(0,0);
     }
 
     @Override

@@ -326,6 +326,7 @@
         android:id="@+id/chatButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="message"
         android:src="@drawable/ic_chat"
         app:maxImageSize="25dp"
         android:backgroundTint="@color/colorSecondaryText"

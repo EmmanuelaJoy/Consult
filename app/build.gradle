@@ -8,6 +8,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    lintOptions {
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.moringaschool.consult"
         minSdkVersion 27
@@ -70,6 +74,5 @@ dependencies {
     //lottie-dependency
     implementation 'com.airbnb.android:lottie:3.4.1'
 }
-=======
-}
+
 apply plugin: 'com.google.gms.google-services'

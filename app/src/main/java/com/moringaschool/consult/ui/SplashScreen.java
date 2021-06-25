@@ -37,6 +37,5 @@ public class SplashScreen extends AppCompatActivity {
         info.animate().translationY(-2500).setDuration(1000).setStartDelay(3000);
     }
 
-    }
 
 }
