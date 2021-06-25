@@ -65,10 +65,10 @@ public class RegisterActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-            finish();
-        }
+//        if(fAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//            finish();
+//        }
         mCreateTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

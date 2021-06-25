@@ -24,7 +24,7 @@
             android:name=".ui.RegisterActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity
-            android:name=".ui.WelcomeActivity"
+            android:name=".ui.Dashboard"
             android:theme="@style/NoActionBarTheme"/>
 
         <activity android:name=".ui.TasksActivity">
@@ -45,7 +45,7 @@
                 android:value="com.moringaschool.consult.ui.Dashboard">
             </meta-data>
         </activity>
-        <activity android:name=".ui.Dashboard">
+        <activity android:name=".ui.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
