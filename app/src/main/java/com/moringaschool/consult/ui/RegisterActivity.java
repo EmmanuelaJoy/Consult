@@ -1,6 +1,7 @@
 package com.moringaschool.consult.ui;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,6 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.rey.material.drawable.ThemeDrawable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.signuppage);
 
         mFullName   = findViewById(R.id.reg_fullname);
         mEmail      = findViewById(R.id.reg_email);
@@ -159,6 +162,10 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     }
+
+//    public void editTextBackground(View view){
+//        view.setBackground(getResources().getDrawable(R.drawable.blue_btn, getTheme()));
+//    }
 
     private void ValidatephoneNumber(String fullName,String phone,String password){
         final DatabaseReference RootRef;

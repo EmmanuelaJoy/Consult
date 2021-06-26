@@ -22,6 +22,8 @@
             android:orientation="vertical"
             android:layout_below="@+id/imageHeader"
             android:gravity="center"
+            android:paddingRight="15sp"
+            android:paddingLeft="15sp"
             app:layout_constraintTop_toBottomOf="@id/imageHeader"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -39,17 +41,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Please enter your account details here"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/ubuntu"
                 android:layout_marginTop="5dp"/>
 
             <LinearLayout
                 android:id="@+id/form"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +70,7 @@
                         android:id="@+id/login_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/white_edit_text"
+                        android:background="@drawable/blue_btn"
                         android:textColor="@color/colorAccent"
                         android:textSize="14sp"
                         android:fontFamily="@font/poppins_regular"
@@ -92,7 +94,7 @@
                         android:id="@+id/login_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/white_edit_text"
+                        android:background="@drawable/blue_btn"
                         android:textColor="@color/colorAccent"
                         android:textSize="14sp"
                         android:fontFamily="@font/poppins_regular"
@@ -144,7 +146,7 @@
                     android:layout_height="55dp"
                     android:text="Log In"
                     android:textColor="@color/colorSecondaryText"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/ubuntu_bold"
                     android:background="@drawable/blue_btn"
                     android:layout_marginTop="20dp"
                     app:elevation="10dp"/>
@@ -183,15 +185,31 @@
                         />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account?"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/ubuntu"/>
+
                 <TextView
                     android:id="@+id/logintxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Don't have an account? Sign Up"
-                    android:textColor="@color/colorPrimaryText"
+                    android:text=" Sign Up"
+                    android:textColor="@color/colorAccent"
                     android:textSize="14sp"
-                    android:fontFamily="@font/poppins_regular"/>
+                    android:fontFamily="@font/ubuntu"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -188,6 +188,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
     private void AllowAccessToAccount(final String phone, final String password)
     {
         if(chkBoxRememberMe.isChecked())
