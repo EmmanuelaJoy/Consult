@@ -167,6 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
 //        view.setBackground(getResources().getDrawable(R.drawable.blue_btn, getTheme()));
 //    }
 
+
     private void ValidatephoneNumber(String fullName,String phone,String password){
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
