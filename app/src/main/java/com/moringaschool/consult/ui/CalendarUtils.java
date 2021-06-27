@@ -1,5 +1,9 @@
 package com.moringaschool.consult.ui;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,18 +14,21 @@ import java.util.ArrayList;
 public class CalendarUtils
 {
     public static LocalDate selectedDate;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static String monthYearFromDate(LocalDate date)
     {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
         return date.format(formatter);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static String formattedDate(LocalDate date)
     {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
         return date.format(formatter);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static String formattedTime(LocalTime time)
     {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
@@ -30,6 +37,7 @@ public class CalendarUtils
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static ArrayList<LocalDate> daysInMonthArray(LocalDate date)
     {
         ArrayList<LocalDate> daysInMonthArray = new ArrayList<>();
@@ -50,6 +58,7 @@ public class CalendarUtils
         return  daysInMonthArray;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static ArrayList<LocalDate> daysInWeekArray(LocalDate selectedDate)
     {
         ArrayList<LocalDate> days = new ArrayList<>();
@@ -64,6 +73,7 @@ public class CalendarUtils
         return days;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private static LocalDate sundayForDate(LocalDate current)
     {
         LocalDate oneWeekAgo = current.minusWeeks(1);
