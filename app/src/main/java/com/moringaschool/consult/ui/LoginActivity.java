@@ -56,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginpage);
 
-        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
-        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+//        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
+//        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         mEmail = findViewById(R.id.login_email);
         mPassword = findViewById(R.id.login_password);
         mPhone = findViewById(R.id.reg_phone);
@@ -79,17 +79,17 @@ public class LoginActivity extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
 
 
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is Required.");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Password is Required.");
                     return;
                 }
 
-                if(password.length() < 6){
+                if (password.length() < 6) {
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
@@ -98,15 +98,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 // authenticate the user
 
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                            startActivity(new Intent(getApplicationContext(), Dashboard.class));
                             progressBar.setVisibility(View.GONE);
-                        }else {
+                        } else {
                             Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
 
@@ -191,7 +191,6 @@ public class LoginActivity extends AppCompatActivity {
 //     }
 
 
-
 //     private void AllowAccessToAccount(final String phone, final String password)
 //     {
 //         if(chkBoxRememberMe.isChecked())
@@ -254,5 +253,6 @@ public class LoginActivity extends AppCompatActivity {
 //             }
 //         });    }
 
+    }
 
 }
