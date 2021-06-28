@@ -78,6 +78,30 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+<!--                 <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    app:boxBackgroundMode="outline"
+                    app:startIconDrawable="@drawable/ic_outline_phone"
+                    app:endIconMode="clear_text"
+                    app:startIconTint="@color/colorButtons"
+                    app:endIconTint="@color/colorButtons"
+                    android:hint="Phone Number"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/blue_btn"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="textPassword"/>
+
+                </com.google.android.material.textfield.TextInputLayout> -->
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -151,44 +175,44 @@
                     android:layout_marginTop="20dp"
                     app:elevation="10dp"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
 
 
-                    <TextView
-                        android:id="@+id/admin_panel_link"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Admin?"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/login_btn"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        />
-                    <TextView
-                        android:id="@+id/not_admin_panel_link"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Not Admin?"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/login_btn"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:layout_weight="0"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="80dp"
-                        android:layout_marginStart="25dp"
-                        android:visibility="invisible"
-                        />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/admin_panel_link"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Admin?"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_below="@+id/login_btn"-->
+<!--                        android:textColor="@color/colorPrimaryDark"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="20sp"-->
+<!--                        />-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/not_admin_panel_link"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Not Admin?"-->
+<!--                        android:layout_alignParentStart="true"-->
+<!--                        android:layout_below="@+id/login_btn"-->
+<!--                        android:textColor="@color/colorPrimaryDark"-->
+<!--                        android:layout_weight="0"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:layout_marginLeft="80dp"-->
+<!--                        android:layout_marginStart="25dp"-->
+<!--                        android:visibility="invisible"-->
+<!--                        />-->
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:gravity="center">
 

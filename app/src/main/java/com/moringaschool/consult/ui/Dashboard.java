@@ -1,6 +1,5 @@
 package com.moringaschool.consult.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,13 +9,11 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.moringaschool.consult.MainActivity;
 import com.moringaschool.consult.R;
 
 public class Dashboard extends AppCompatActivity {
-    FirebaseUser firebaseUser;
-    FirebaseAuth mAuth;
+
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -26,7 +23,7 @@ public class Dashboard extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
-        mAuth = FirebaseAuth.getInstance();
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -41,9 +38,10 @@ public class Dashboard extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.chatButton:
+                    case R.id.chatButton:h:
                         startActivity(new Intent(getApplicationContext(), TextActivity.class));
                         overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
@@ -64,5 +62,4 @@ public class Dashboard extends AppCompatActivity {
         }
 
     }
-
 }
