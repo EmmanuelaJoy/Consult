@@ -1,10 +1,16 @@
 package com.moringaschool.consult.ui;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.consult.R;
 
 import android.content.Intent;
@@ -18,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,6 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.rey.material.drawable.ThemeDrawable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.signuppage);
 
         mFullName   = findViewById(R.id.reg_fullname);
         mEmail      = findViewById(R.id.reg_email);
@@ -60,10 +68,10 @@ public class RegisterActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-            finish();
-        }
+//        if(fAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//            finish();
+//        }
         mCreateTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +90,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
+                    return;
+                }
+                if(TextUtils.isEmpty(email)){
+                    mFullName.setError("Name is Required.");
                     return;
                 }
 
@@ -103,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-
+                            ValidatephoneNumber(fullName,phone,password);
                             // send verification link
 
                             FirebaseUser fuser = fAuth.getCurrentUser();
@@ -149,5 +161,60 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+    }
+
+//    public void editTextBackground(View view){
+//        view.setBackground(getResources().getDrawable(R.drawable.blue_btn, getTheme()));
+//    }
+
+
+    private void ValidatephoneNumber(String fullName,String phone,String password){
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!(dataSnapshot.child("Users").child(phone).exists()))
+                {
+                    HashMap<String,Object>userdataMap = new HashMap<>();
+                    userdataMap.put("phone",phone);
+                    userdataMap.put("password",password);
+                    userdataMap.put("name",fullName);
+
+                    RootRef.child("Users").child(phone).updateChildren(userdataMap)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull  Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        Toast.makeText(RegisterActivity.this,"Congratulations,your account has been created",Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                        Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    else{
+                                        Toast.makeText(RegisterActivity.this,"Network Error:Please try again after some time...",Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
+                }
+                else{
+                    Toast.makeText(RegisterActivity.this,"This"+ phone + "already exists",Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(RegisterActivity.this,"Please try again using another phone number",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this,WelcomeActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -42,12 +42,11 @@
 
                 <com.google.android.material.card.MaterialCardView
                     app:theme="@style/Theme.MaterialComponents"
-                    android:layout_width="280dp"
+                    android:layout_width="300dp"
                     android:layout_height="180dp"
                     android:layout_gravity="center"
                     app:cardBackgroundColor="@color/colorSecondaryText"
                     app:cardPreventCornerOverlap="true"
-                    app:cardCornerRadius="20dp"
                     app:cardElevation="0dp">
 
                     <LinearLayout
@@ -60,7 +59,8 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/circle"
+                            android:src="@drawable/ic_account"
+                            app:tint="@color/colorPrimaryLight"
                             android:elevation="1dp"/>
 
                         <TextView
@@ -68,19 +68,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="Name"
+                            android:text="Emmanuela Joy"
                             android:textColor="@color/colorPrimaryText"
-                            android:textSize="21sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/displayUsername"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_regular"
-                            android:text="Email"
+                            android:text="emmajoy81@gmail.com"
                             android:textColor="@color/colorPrimaryText"
                             android:textAlignment="center"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -129,6 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:onClick="use"
                         android:src="@drawable/ic_next"
                         android:layout_alignParentEnd="true"/>
 
