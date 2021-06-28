@@ -54,8 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.loginpage);
 
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
@@ -78,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-                String phone = mPhone.getText().toString().trim();
+
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
@@ -89,10 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     mPassword.setError("Password is Required.");
                     return;
                 }
-                if(TextUtils.isEmpty(phone)){
-                    mPhone.setError("Phone Number is Required.");
-                    return;
-                }
+
                 if(password.length() < 6){
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
@@ -106,8 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-
-                            AllowAccessToAccount(phone, password);
 
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(getApplicationContext(), Dashboard.class));
@@ -173,91 +167,92 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        AdminLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                mLoginBtn.setText("Login Admin");
-                AdminLink.setVisibility(View.INVISIBLE);
-                NotAdminLink.setVisibility(View.VISIBLE);
-                parentDbName = "Admins";
-            }
-        });
-        NotAdminLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                mLoginBtn.setText("Login");
-                AdminLink.setVisibility(View.VISIBLE);
-                NotAdminLink.setVisibility(View.INVISIBLE);
-                parentDbName = "Users";
-            }
-        });
-    }
+
+//         AdminLink.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View view)
+//             {
+//                 mLoginBtn.setText("Login Admin");
+//                 AdminLink.setVisibility(View.INVISIBLE);
+//                 NotAdminLink.setVisibility(View.VISIBLE);
+//                 parentDbName = "Admins";
+//             }
+//         });
+//         NotAdminLink.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View view)
+//             {
+//                 mLoginBtn.setText("Login");
+//                 AdminLink.setVisibility(View.VISIBLE);
+//                 NotAdminLink.setVisibility(View.INVISIBLE);
+//                 parentDbName = "Users";
+//             }
+//         });
+//     }
 
 
 
-    private void AllowAccessToAccount(final String phone, final String password)
-    {
-        if(chkBoxRememberMe.isChecked())
-        {
-            Paper.book().write(Prevalent.UserPhoneKey, phone);
-            Paper.book().write(Prevalent.UserPasswordKey, password);
-        }
+//     private void AllowAccessToAccount(final String phone, final String password)
+//     {
+//         if(chkBoxRememberMe.isChecked())
+//         {
+//             Paper.book().write(Prevalent.UserPhoneKey, phone);
+//             Paper.book().write(Prevalent.UserPasswordKey, password);
+//         }
 
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
+//         final DatabaseReference RootRef;
+//         RootRef = FirebaseDatabase.getInstance().getReference();
 
 
-        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.child(parentDbName).child(phone).exists())
-                {
-                    Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
+//         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//             @Override
+//             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+//             {
+//                 if (dataSnapshot.child(parentDbName).child(phone).exists())
+//                 {
+//                     Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
 
-                    if (usersData.getPhone().equals(phone))
-                    {
-                        if (usersData.getPassword().equals(password))
-                        {
-                            if (parentDbName.equals("Admins"))
-                            {
-                                Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+//                     if (usersData.getPhone().equals(phone))
+//                     {
+//                         if (usersData.getPassword().equals(password))
+//                         {
+//                             if (parentDbName.equals("Admins"))
+//                             {
+//                                 Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+//                                 progressBar.setVisibility(View.GONE);
 
-                                Intent intent = new Intent(LoginActivity.this, TaskActivity.class);
-                                startActivity(intent);
-                            }
-                            else if (parentDbName.equals("Users"))
-                            {
-                                Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+//                                 Intent intent = new Intent(LoginActivity.this, TaskActivity.class);
+//                                 startActivity(intent);
+//                             }
+//                             else if (parentDbName.equals("Users"))
+//                             {
+//                                 Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+//                                 progressBar.setVisibility(View.GONE);
 
-                                Intent intent = new Intent(LoginActivity.this, TasksActivity.class);
-                                Prevalent.currentOnlineUser = usersData;
-                                startActivity(intent);
-                            }
-                        }
-                        else
-                        {
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(LoginActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-                else
-                {
-                    Toast.makeText(LoginActivity.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
+//                                 Intent intent = new Intent(LoginActivity.this, TasksActivity.class);
+//                                 Prevalent.currentOnlineUser = usersData;
+//                                 startActivity(intent);
+//                             }
+//                         }
+//                         else
+//                         {
+//                             progressBar.setVisibility(View.GONE);
+//                             Toast.makeText(LoginActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+//                         }
+//                     }
+//                 }
+//                 else
+//                 {
+//                     Toast.makeText(LoginActivity.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
+//                     progressBar.setVisibility(View.GONE);
+//                 }
+//             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+//             @Override
+//             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-    }
+//             }
+//         });    }
+
 
 }

@@ -103,7 +103,8 @@ public class AddNewTask  extends BottomSheetDialogFragment {
                     mSaveBtn.setBackgroundColor(Color.parseColor("#395A93"));
                 }else{
                     mSaveBtn.setEnabled(true);
-                    mSaveBtn.setBackgroundColor(Color.parseColor("#395A93"));
+                    mSaveBtn.setBackgroundColor(Color.DKGRAY);
+
                 }
             }
 

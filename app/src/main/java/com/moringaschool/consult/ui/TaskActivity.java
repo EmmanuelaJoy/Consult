@@ -1,5 +1,4 @@
 package com.moringaschool.consult.ui;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -25,6 +24,7 @@ import com.moringaschool.consult.ui.Adapter.ToDoAdapter;
 import com.moringaschool.consult.ui.Model.ToDoModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TaskActivity extends AppCompatActivity implements OnDialogCloseListner{
@@ -44,7 +44,7 @@ public class TaskActivity extends AppCompatActivity implements OnDialogCloseList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-        recyclerView = findViewById(R.id.recycerlview);
+        recyclerView = findViewById(R.id.recyclerviewtasks);
         mFab = findViewById(R.id.floatingActionButton);
         firestore = FirebaseFirestore.getInstance();
 
@@ -69,7 +69,7 @@ public class TaskActivity extends AppCompatActivity implements OnDialogCloseList
     private void showData(){
         query = firestore.collection("task").orderBy("time" , Query.Direction.DESCENDING);
 
-        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        listenerRegistration = query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 for (DocumentChange documentChange : value.getDocumentChanges()){
@@ -80,7 +80,7 @@ public class TaskActivity extends AppCompatActivity implements OnDialogCloseList
                         adapter.notifyDataSetChanged();
                     }
                 }
-
+                listenerRegistration.remove();
 
             }
         });
