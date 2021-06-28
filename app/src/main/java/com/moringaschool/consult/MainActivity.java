@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         prompt = findViewById(R.id.empty_prompt);
         database = FirebaseDatabase.getInstance();
         dbRef = database.getReference("rooms");

@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.moringaschool.consult.MainActivity;
 import com.moringaschool.consult.R;
 
 public class Dashboard extends AppCompatActivity {

@@ -83,6 +83,30 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     app:boxBackgroundMode="outline"
+                    app:startIconDrawable="@drawable/ic_outline_phone"
+                    app:endIconMode="clear_text"
+                    app:startIconTint="@color/colorButtons"
+                    app:endIconTint="@color/colorButtons"
+                    android:hint="Phone Number"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/blue_btn"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="textPassword"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    app:boxBackgroundMode="outline"
                     app:startIconDrawable="@drawable/ic_lock_open"
                     app:endIconMode="password_toggle"
                     app:startIconTint="@color/colorButtons"
