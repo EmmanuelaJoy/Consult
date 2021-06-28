@@ -1,3 +1,4 @@
+
 package com.moringaschool.consult.ui;
 
 
@@ -50,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseFirestore fStore;
     String userID;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +113,41 @@ public class RegisterActivity extends AppCompatActivity {
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            FirebaseUser fuser = fAuth.getCurrentUser();
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = fAuth.getCurrentUser();
                             // send verification link
+                            reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+                            if (user != null) {
 
-                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("username", fullName);
+                                hashMap.put("email", email);
+                                hashMap.put("id", user.getUid());
+                                hashMap.put("imageURL", "default");
+                                hashMap.put("status", "offline");
+
+
+                                reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+
+                                        if (task.isSuccessful()) {
+
+                                            Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+
+                                            startActivity(new Intent(RegisterActivity.this,
+                                                    LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+
+
+                                        }
+                                    }
+                                });
+
+
+                            }
+
+                            user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(RegisterActivity.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
@@ -126,42 +158,51 @@ public class RegisterActivity extends AppCompatActivity {
                                     Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
                                 }
                             });
-
-                            Toast.makeText(RegisterActivity.this, "User Created.", Toast.LENGTH_SHORT).show();
-                            userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("users").document(userID);
-                            Map<String,Object> user = new HashMap<>();
-                            user.put("fName",fullName);
-                            user.put("email",email);
-                            user.put("phone",phone);
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure: " + e.toString());
-                                }
-                            });
-                            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-
                         }else {
                             Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
-                    }
-                });
-            }
-        });
 
-
-    }
+//                            Toast.makeText(RegisterActivity.this, "User Created.", Toast.LENGTH_SHORT).show();
+//                            userID = fAuth.getCurrentUser().getUid();
+//                            DocumentReference documentReference = fStore.collection("users").document(userID);
+//                            Map<String,Object> user = new HashMap<>();
+//                            user.put("fName",fullName);
+//                            user.put("email",email);
+//                            user.put("phone",phone);
+//                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                @Override
+//                                public void onSuccess(Void aVoid) {
+//                                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Log.d(TAG, "onFailure: " + e.toString());
+//                                }
+//                            });
+//                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//
+//                        }else {
+//                            Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                            progressBar.setVisibility(View.GONE);
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//
+//
+                        }
 
 //    public void editTextBackground(View view){
 //        view.setBackground(getResources().getDrawable(R.drawable.blue_btn, getTheme()));
 //    }
 
 
+
+                });
+            }
+        });
+    }
 }

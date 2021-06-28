@@ -90,10 +90,24 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.2'
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
-
+    implementation 'com.karumi:dexter:6.2.1'
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 //    implementation 'br.com.simplepass:loading-button-android:2.2.0'
     //lottie-dependency
     implementation 'com.airbnb.android:lottie:3.4.1'
+
+    implementation 'com.google.firebase:firebase-analytics:17.6.0'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.google.firebase:firebase-database:19.5.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
