@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -35,6 +36,7 @@ public class TaskActivity extends AppCompatActivity implements OnDialogCloseList
     private List<ToDoModel> mList;
     private Query query;
     private ListenerRegistration listenerRegistration;
+    private MaterialCardView cardView;
 
 
     @Override
