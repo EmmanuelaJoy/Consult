@@ -163,5 +163,49 @@ public class RegisterActivity extends AppCompatActivity {
 //        view.setBackground(getResources().getDrawable(R.drawable.blue_btn, getTheme()));
 //    }
 
+//     private void ValidatephoneNumber(String fullName,String phone,String password){
+//         final DatabaseReference RootRef;
+//         RootRef = FirebaseDatabase.getInstance().getReference();
+
+//         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//             @Override
+//             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                 if(!(dataSnapshot.child("Users").child(phone).exists()))
+//                 {
+//                     HashMap<String,Object>userdataMap = new HashMap<>();
+//                     userdataMap.put("phone",phone);
+//                     userdataMap.put("password",password);
+//                     userdataMap.put("name",fullName);
+
+//                     RootRef.child("Users").child(phone).updateChildren(userdataMap)
+//                             .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                 @Override
+//                                 public void onComplete(@NonNull  Task<Void> task) {
+//                                     if(task.isSuccessful())
+//                                     {
+//                                         Toast.makeText(RegisterActivity.this,"Congratulations,your account has been created",Toast.LENGTH_SHORT).show();
+//                                         progressBar.setVisibility(View.GONE);
+//                                         Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+//                                         startActivity(intent);
+//                                     }
+//                                     else{
+//                                         Toast.makeText(RegisterActivity.this,"Network Error:Please try again after some time...",Toast.LENGTH_SHORT).show();
+//                                         progressBar.setVisibility(View.GONE);
+//                                     }
+//                                 }
+//                             });
+
+//                 }
+//                 else{
+//                     Toast.makeText(RegisterActivity.this,"This"+ phone + "already exists",Toast.LENGTH_SHORT).show();
+//                     progressBar.setVisibility(View.GONE);
+//                     Toast.makeText(RegisterActivity.this,"Please try again using another phone number",Toast.LENGTH_SHORT).show();
+//                     Intent intent = new Intent(RegisterActivity.this,WelcomeActivity.class);
+//                     startActivity(intent);
+//                 }
+
+//             }
+
+
 
 }
