@@ -48,13 +48,8 @@
                 android:value="com.moringaschool.consult.ui.Dashboard">
             </meta-data>
         </activity>
-        <activity android:name=".ui.Dashboard"/>
-        <activity android:name=".ui.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.consult.ui.Dashboard">
-            </meta-data>
-        </activity>
+        <activity android:name=".ui.Dashboard"></activity>
+        <activity android:name=".ui.MainActivity"></activity>
         <activity android:name=".ui.LoginActivity" android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.RegisterActivity"  android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ui.WelcomeActivity"  android:theme="@style/NoActionBarTheme">
@@ -65,6 +60,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Chat"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
