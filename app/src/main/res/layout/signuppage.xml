@@ -108,7 +108,6 @@
                     app:startIconTint="@color/colorButtons"
                     app:counterEnabled="true"
                     app:counterMaxLength="9"
-                    app:prefixText="+254"
                     app:prefixTextColor="@color/colorAccent">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -148,29 +147,195 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <LinearLayout
+                    android:id="@+id/passwordValidation"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="25dp"
-                    android:hint="Confirm Password"
-                    app:boxBackgroundMode="outline"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="@color/colorButtons"
-                    app:startIconDrawable="@drawable/ic_outline_lock"
-                    app:startIconTint="@color/colorButtons">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/reg_confirm_password"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/blue_btn"
-                        android:fontFamily="@font/poppins_regular"
-                        android:inputType="textPassword"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp" />
+                        android:text="Your password must contain:"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/card1text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="At least 6 characters"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/card2text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="A number"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/card3text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="An uppercase letter"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/card4text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="A special symbol"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card5"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/card5text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="A lowercase letter"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginTop="25dp"-->
+<!--                    android:hint="Confirm Password"-->
+<!--                    app:boxBackgroundMode="outline"-->
+<!--                    app:endIconMode="password_toggle"-->
+<!--                    app:endIconTint="@color/colorButtons"-->
+<!--                    app:startIconDrawable="@drawable/ic_outline_lock"-->
+<!--                    app:startIconTint="@color/colorButtons">-->
+
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/reg_confirm_password"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/blue_btn"-->
+<!--                        android:fontFamily="@font/poppins_regular"-->
+<!--                        android:inputType="textPassword"-->
+<!--                        android:textColor="@color/colorAccent"-->
+<!--                        android:textSize="14sp" />-->
+
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
 
                 <com.google.android.material.button.MaterialButton
