@@ -37,7 +37,7 @@
         app:civ_border_color="#05df29"
         android:visibility="gone"
         android:layout_marginLeft="-15dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/send"
         android:layout_below="@id/username_userfrag"
         android:layout_toEndOf="@id/image_user_userfrag"
         android:layout_toRightOf="@id/image_user_userfrag" />
@@ -51,7 +51,7 @@
         android:visibility="gone"
         app:civ_border_color="@android:color/darker_gray"
         android:layout_marginLeft="-15dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/send"
         android:layout_below="@id/username_userfrag"
         android:layout_toEndOf="@id/image_user_userfrag"
         android:layout_toRightOf="@id/image_user_userfrag" />

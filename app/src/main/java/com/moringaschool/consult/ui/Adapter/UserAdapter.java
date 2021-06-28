@@ -143,7 +143,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyHolder> {
         @Override
         public void onClick(View v) {
 
-            Users users = userlist.get(getAdapterPosition());
+            Users users = userlist.get(getBindingAdapterPosition());
 
             friendid = users.getId();
 

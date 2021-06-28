@@ -21,7 +21,7 @@
         android:id="@+id/toolbar_message"
         android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/MenuStyle"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimary">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="30dp"
@@ -89,7 +89,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:enabled="false"
-                android:background="@drawable/send"
+                android:backgroundTint="#fff"
+                android:background="@drawable/ic_launcher_foreground"
                 android:id="@+id/send_messsage_btn"
                 android:layout_margin="10dp"/>
 
