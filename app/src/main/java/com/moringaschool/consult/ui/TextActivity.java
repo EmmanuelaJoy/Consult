@@ -76,11 +76,11 @@ public class TextActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameonmainactivity);
 
 
-
-        toolbar = findViewById(R.id.toolbarmain);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+//        toolbar = findViewById(R.id.toolbarmain);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle("");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
