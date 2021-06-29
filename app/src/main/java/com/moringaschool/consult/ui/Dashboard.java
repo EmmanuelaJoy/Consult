@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.moringaschool.consult.MainActivity;
+
 import com.moringaschool.consult.R;
 
 public class Dashboard extends AppCompatActivity {
@@ -38,6 +38,10 @@ public class Dashboard extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
                         overridePendingTransition(0,0);
                         return true;
+                    case R.id.chatButton:h:
+                        startActivity(new Intent(getApplicationContext(), TextActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
@@ -46,7 +50,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void message(View view){
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), TextActivity.class));
         overridePendingTransition(0,0);
     }
 
