@@ -110,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!validateFullNames() || !validateEmail() || !validatePassword()) {
+                if(!validateFullNames() || !validateEmail() || !validatePhoneNumber() || !validatePassword()) {
                     return;
                 } else {
                     final String email = mEmail.getText().toString().trim();
@@ -202,6 +202,18 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    private Boolean validatePhoneNumber(){
+        String value = mPhone.getEditableText().toString();
+
+        if (value.isEmpty()){
+            mPhone.setError("Field cannot be empty");
+            return false;
+        }else{
+            mPhone.setError(null);
+            return true;
+        }
+    }
+
     private Boolean validatePassword(){
         if (!is6char || !hasUpper || !hasnum || !hasSpecialSymbol ||!hasLower){
             mPassword.setError("Password is too weak");
@@ -246,10 +258,11 @@ public class RegisterActivity extends AppCompatActivity {
             card1.setCardBackgroundColor(Color.parseColor(getString(R.color.colorButtons)));
             card1Text.setTextColor(Color.GRAY);
         }
-        //number
-        if(value.matches("(.*[0-9].*)"))
+
+        //upper case
+        if(value.matches("(.*[A-Z].*)"))
         {
-            hasnum = true;
+            hasUpper = true;
             card2.setCardBackgroundColor(Color.parseColor(getString(R.color.colorValid)));
             card2Text.setTextColor(Color.parseColor(getString(R.color.colorPrimaryText)));
         }else{
@@ -257,37 +270,39 @@ public class RegisterActivity extends AppCompatActivity {
             card2.setCardBackgroundColor(Color.parseColor(getString(R.color.colorButtons)));
             card2Text.setTextColor(Color.GRAY);
         }
-        //upper case
-        if(value.matches("(.*[A-Z].*)"))
-        {
-            hasUpper = true;
-            card3.setCardBackgroundColor(Color.parseColor(getString(R.color.colorValid)));
-            card3Text.setTextColor(Color.parseColor(getString(R.color.colorPrimaryText)));
-        }else{
-            hasUpper = false;
-            card3.setCardBackgroundColor(Color.parseColor(getString(R.color.colorButtons)));
-            card3Text.setTextColor(Color.GRAY);
-        }
         //lower case
         if(value.matches("(.*[a-z].*)"))
         {
             hasLower = true;
-            card5.setCardBackgroundColor(Color.parseColor(getString(R.color.colorValid)));
-            card5Text.setTextColor(Color.parseColor(getString(R.color.colorPrimaryText)));
+            card3.setCardBackgroundColor(Color.parseColor(getString(R.color.colorValid)));
+            card3Text.setTextColor(Color.parseColor(getString(R.color.colorPrimaryText)));
         }else{
             hasLower = false;
-            card5.setCardBackgroundColor(Color.parseColor(getString(R.color.colorButtons)));
-            card5Text.setTextColor(Color.GRAY);
+            card3.setCardBackgroundColor(Color.parseColor(getString(R.color.colorButtons)));
+            card3Text.setTextColor(Color.GRAY);
         }
-        //symbol
-        if(value.matches("^(?=.*[_.()$&@]).*$")){
-            hasSpecialSymbol = true;
+
+        //number
+        if(value.matches("(.*[0-9].*)"))
+        {
+            hasnum = true;
             card4.setCardBackgroundColor(Color.parseColor(getString(R.color.colorValid)));
             card4Text.setTextColor(Color.parseColor(getString(R.color.colorPrimaryText)));
         }else{
-            hasSpecialSymbol = false;
+            hasnum = false;
             card4.setCardBackgroundColor(Color.parseColor(getString(R.color.colorButtons)));
             card4Text.setTextColor(Color.GRAY);
+        }
+
+        //symbol
+        if(value.matches("^(?=.*[_.()$&@]).*$")){
+            hasSpecialSymbol = true;
+            card5.setCardBackgroundColor(Color.parseColor(getString(R.color.colorValid)));
+            card5Text.setTextColor(Color.parseColor(getString(R.color.colorPrimaryText)));
+        }else{
+            hasSpecialSymbol = false;
+            card5.setCardBackgroundColor(Color.parseColor(getString(R.color.colorButtons)));
+            card5Text.setTextColor(Color.GRAY);
         }
     }
 
