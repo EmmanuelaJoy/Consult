@@ -1,11 +1,14 @@
 package com.moringaschool.consult.ui;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
@@ -75,15 +79,15 @@ public class TextActivity extends AppCompatActivity {
 
 
 
-        toolbar = findViewById(R.id.toolbarmain);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar = findViewById(R.id.toolbarmain);
+//        this.setSupportActionBar(toolbar);
+//        this.getSupportActionBar().setTitle("");
+//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
         ViewPager viewPager = findViewById(R.id.viewPager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, this);
 
         viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
         viewPagerAdapter.addFragment(new UsersFragment(), "Users");
@@ -105,15 +109,15 @@ public class TextActivity extends AppCompatActivity {
 
                 Users users = snapshot.getValue(Users.class);
 
-                username.setText(users.getUsername()); // set the text of the user on textivew in toolbar
+//                username.setText(users.getUsername()); // set the text of the user on textivew in toolbar
 
-                if (users.getImageURL().equals("default")) {
-
-                    imageView.setImageResource(R.drawable.user);
-                } else {
-
-                    Glide.with(getApplicationContext()).load(users.getImageURL()).into(imageView);
-                }
+//                if (users.getImageURL().equals("default")) {
+//
+//                    imageView.setImageResource(R.drawable.user);
+//                } else {
+//
+//                    Glide.with(getApplicationContext()).load(users.getImageURL()).into(imageView);
+//                }
 
             }
 
@@ -138,8 +142,8 @@ public class TextActivity extends AppCompatActivity {
         ArrayList<String> titles;
 
 
-        public ViewPagerAdapter(FragmentManager fm) {
-            super(fm);
+        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior, Context mContext) {
+            super(fm,behavior);
 
             this.fragments = new ArrayList<>();
             this. titles = new ArrayList<>();
@@ -233,7 +237,6 @@ public class TextActivity extends AppCompatActivity {
             RequestNewGroup();
         }
 
-
         return true;
     }
 
@@ -293,4 +296,6 @@ public class TextActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 }

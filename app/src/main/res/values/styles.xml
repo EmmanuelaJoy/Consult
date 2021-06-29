@@ -15,9 +15,8 @@
         <item name="windowNoTitle">true</item>
 
     </style>
-<style name="AlertDialog" parent="Material.App.Dialog.Light">
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
-</style>
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#000</item>
+    </style>
 
 </resources>
