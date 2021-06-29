@@ -35,7 +35,7 @@
 
         <activity android:name=".ui.WeekViewActivity" />
         <activity android:name=".ui.EventEditActivity" />
-        <activity android:name=".ui.MessageActivity" />
+        <activity android:name=".ui.MessageActivity" android:parentActivityName="ui.LoginActivity" />
         <activity android:name=".ui.UserDetails">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -47,7 +47,7 @@
                 android:value="com.moringaschool.consult.ui.Dashboard" />
         </activity>
         <activity android:name=".ui.Dashboard" />
-        <activity android:name=".ui.TextActivity">
+        <activity android:name=".ui.TextActivity" android:parentActivityName="ui.Dashboard">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.Dashboard" />
