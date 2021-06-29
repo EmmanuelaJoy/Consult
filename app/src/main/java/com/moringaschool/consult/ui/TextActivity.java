@@ -3,10 +3,12 @@ package com.moringaschool.consult.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,10 +79,10 @@ public class TextActivity extends AppCompatActivity {
 
 
 
-        toolbar = findViewById(R.id.toolbarmain);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar = findViewById(R.id.toolbarmain);
+//        this.setSupportActionBar(toolbar);
+//        this.getSupportActionBar().setTitle("");
+//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
@@ -294,4 +296,6 @@ public class TextActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 }
