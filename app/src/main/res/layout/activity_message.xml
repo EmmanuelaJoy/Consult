@@ -87,7 +87,7 @@
                 android:layout_height="50dp"
                 android:enabled="false"
                 android:backgroundTint="@color/colorValid"
-                android:background="@drawable/ic_launcher_foreground"
+                android:background="@drawable/ic_next"
                 android:id="@+id/send_messsage_btn"
                 android:layout_margin="10dp"/>
 
