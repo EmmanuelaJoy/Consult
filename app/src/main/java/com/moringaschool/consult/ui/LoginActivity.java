@@ -41,7 +41,6 @@ import io.paperdb.Paper;
 public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText mEmail,mPassword;
-    TextInputEditText mPhone;
     MaterialButton mLoginBtn;
 
     TextView mCreateBtn,forgotTextLink,AdminLink,NotAdminLink;
@@ -60,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
 
         mEmail = findViewById(R.id.login_email);
         mPassword = findViewById(R.id.login_password);
-        mPhone = findViewById(R.id.reg_phone);
 
         progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();

@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Consult">
-        <activity android:name=".ui.GroupChatActivity" android:theme="@style/NoActionBarTheme" />
+        <activity android:name=".ui.GroupChatActivity" android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.consult.ui.TextActivity" />
+        </activity>
         <activity
             android:name=".ui.SplashScreen"
             android:theme="@style/NoActionBarTheme">
@@ -35,7 +39,11 @@
 
         <activity android:name=".ui.WeekViewActivity" />
         <activity android:name=".ui.EventEditActivity" />
-        <activity android:name=".ui.MessageActivity" />
+        <activity android:name=".ui.MessageActivity" android:theme="@style/NoActionBarTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.consult.ui.TextActivity" />
+        </activity>
         <activity android:name=".ui.UserDetails">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
