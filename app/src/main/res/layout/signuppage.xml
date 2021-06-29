@@ -50,7 +50,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:hint="Full Names"
                     app:boxBackgroundMode="outline"
@@ -74,7 +74,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:hint="Email Address"
                     app:boxBackgroundMode="outline"
@@ -98,7 +98,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:hint="Phone Number"
                     app:boxBackgroundMode="outline"
@@ -106,9 +106,7 @@
                     app:endIconTint="@color/colorButtons"
                     app:startIconDrawable="@drawable/ic_outline_phone"
                     app:startIconTint="@color/colorButtons"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="9"
-                    app:prefixText="+254"
+                    app:counterMaxLength="10"
                     app:prefixTextColor="@color/colorAccent">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -117,8 +115,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/blue_btn"
                         android:fontFamily="@font/poppins_regular"
-                        android:inputType="number"
-                        android:maxLength="9"
+                        android:inputType="phone"
+                        android:maxLength="10"
                         android:textColor="@color/colorAccent"
                         android:textSize="14sp" />
 
@@ -127,7 +125,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:hint="Password"
                     app:boxBackgroundMode="outline"
@@ -148,29 +146,223 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <LinearLayout
+                    android:id="@+id/passwordValidation"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="25dp"
-                    android:hint="Confirm Password"
-                    app:boxBackgroundMode="outline"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="@color/colorButtons"
-                    app:startIconDrawable="@drawable/ic_outline_lock"
-                    app:startIconTint="@color/colorButtons">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/reg_confirm_password"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/blue_btn"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:inputType="textPassword"
-                        android:textColor="@color/colorAccent"
+                        android:text="Your password must contain:"
                         android:textSize="14sp" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:id="@+id/card1text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="center|start"
+                            android:text="At least 6 characters"
+                            android:fontFamily="@font/poppins_light"
+                            android:textSize="12sp"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:id="@+id/card2text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="An uppercase letter"
+                            android:fontFamily="@font/poppins_light"
+                            android:textSize="12sp"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:id="@+id/card3text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="A lowercase letter"
+                            android:fontFamily="@font/poppins_light"
+                            android:textSize="12sp"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:id="@+id/card4text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="A number"
+                            android:fontFamily="@font/poppins_light"
+                            android:textSize="12sp"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card5"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:cardBackgroundColor="#dcdcdc"
+                            app:cardCornerRadius="25dp"
+                            android:layout_gravity="center">
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/ic_outline_check" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:id="@+id/card5text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="A special symbol"
+                            android:fontFamily="@font/poppins_light"
+                            android:textSize="12sp"
+                            android:gravity="center|start"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginLeft="10dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginTop="25dp"-->
+<!--                    android:hint="Confirm Password"-->
+<!--                    app:boxBackgroundMode="outline"-->
+<!--                    app:endIconMode="password_toggle"-->
+<!--                    app:endIconTint="@color/colorButtons"-->
+<!--                    app:startIconDrawable="@drawable/ic_outline_lock"-->
+<!--                    app:startIconTint="@color/colorButtons">-->
+
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/reg_confirm_password"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/blue_btn"-->
+<!--                        android:fontFamily="@font/poppins_regular"-->
+<!--                        android:inputType="textPassword"-->
+<!--                        android:textColor="@color/colorAccent"-->
+<!--                        android:textSize="14sp" />-->
+
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
 
                 <com.google.android.material.button.MaterialButton
@@ -182,7 +374,8 @@
                     android:fontFamily="@font/ubuntu_bold"
                     android:text="Sign Up"
                     android:textColor="@color/colorSecondaryText"
-                    app:elevation="10dp" />
+                    app:elevation="10dp"
+                    android:transitionName="transition_next"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
