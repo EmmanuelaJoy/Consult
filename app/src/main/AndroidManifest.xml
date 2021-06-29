@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Consult">
-        <activity android:name=".ui.GroupChatActivity" />
+        <activity android:name=".ui.GroupChatActivity" android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".ui.SplashScreen"
             android:theme="@style/NoActionBarTheme">
@@ -47,7 +47,7 @@
                 android:value="com.moringaschool.consult.ui.Dashboard" />
         </activity>
         <activity android:name=".ui.Dashboard" />
-        <activity android:name=".ui.TextActivity">
+        <activity android:name=".ui.TextActivity" android:theme="@style/NoActionBarTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.Dashboard" />
