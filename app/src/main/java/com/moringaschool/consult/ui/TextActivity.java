@@ -107,15 +107,15 @@ public class TextActivity extends AppCompatActivity {
 
                 Users users = snapshot.getValue(Users.class);
 
-                username.setText(users.getUsername()); // set the text of the user on textivew in toolbar
+//                username.setText(users.getUsername()); // set the text of the user on textivew in toolbar
 
-                if (users.getImageURL().equals("default")) {
-
-                    imageView.setImageResource(R.drawable.user);
-                } else {
-
-                    Glide.with(getApplicationContext()).load(users.getImageURL()).into(imageView);
-                }
+//                if (users.getImageURL().equals("default")) {
+//
+//                    imageView.setImageResource(R.drawable.user);
+//                } else {
+//
+//                    Glide.with(getApplicationContext()).load(users.getImageURL()).into(imageView);
+//                }
 
             }
 
