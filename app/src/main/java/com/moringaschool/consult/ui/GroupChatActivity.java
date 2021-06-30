@@ -113,6 +113,7 @@ public class GroupChatActivity extends AppCompatActivity
 
 //        fileName = "${externalCacheDir.absolutePath}/audiorecordtest.3gp";
         fileName = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "/recorded_audio.3gp";
+
 //        fileName = Environment.getExternalStorageDirectory().getAbsolutePath();
 //        fileName += "/recorded_audio.3gp";
 
