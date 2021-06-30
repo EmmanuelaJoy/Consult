@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="20dp"
+        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,14 +26,42 @@
             android:backgroundTint="#DD2D2D" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent=".8"
-        app:layout_constraintHeight_percent=".1"
-        android:text="Page your fellow colleagues to help with your time sensitive cases. Send Alerts in emergency cases."
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins_regular"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintHeight_percent=".1"
+            android:text="Page your fellow colleagues to help with your time sensitive cases. Send Alerts in emergency cases."
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <EditText
+            android:id="@+id/alert_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"/>
+
+        <EditText
+            android:id="@+id/alert_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alert_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sendOnChannel1"
+            android:text="Alert"
+            android:textColor="@color/colorSecondaryText"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/alert_button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sendOnChannel2"
+            android:text="Alert2"
+            android:textColor="@color/colorSecondaryText"/>
 
     </LinearLayout>
 
