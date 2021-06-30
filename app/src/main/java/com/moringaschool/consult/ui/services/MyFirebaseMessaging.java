@@ -43,7 +43,6 @@ public class MyFirebaseMessaging extends com.google.firebase.messaging.FirebaseM
             PendingIntent resultPendingIntent = PendingIntent.getActivity(this,0,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
             mBuilder.setContentIntent(resultPendingIntent);
 
-
             int mNotificationId=(int)System.currentTimeMillis();
             NotificationManager mNotifyManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
             mNotifyManager.notify(mNotificationId,mBuilder.build());
