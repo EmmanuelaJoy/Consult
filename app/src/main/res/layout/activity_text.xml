@@ -17,8 +17,6 @@
             app:navigationIcon="?attr/actionModeCloseDrawable"
             android:background="@color/colorPrimary">
 
-
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -34,9 +32,6 @@
                 android:textStyle="bold"/>
 
 
-
-
-
         </androidx.appcompat.widget.Toolbar>
 
 
@@ -45,7 +40,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tablayout"
             android:background="@color/colorPrimary"
-            app:tabSelectedTextColor="@android:color/white"
+            app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicator="@color/colorAccent"
             app:tabTextColor="@color/colorSecondaryText"/>
 

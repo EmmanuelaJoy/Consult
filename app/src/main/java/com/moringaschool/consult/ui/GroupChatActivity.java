@@ -1,12 +1,21 @@
 package com.moringaschool.consult.ui;
 
 
+import android.annotation.SuppressLint;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -15,6 +24,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -24,16 +34,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.consult.R;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import static android.os.Looper.prepare;
+import static com.google.common.collect.ComparisonChain.start;
+
 public class GroupChatActivity extends AppCompatActivity
 {
     private Toolbar mToolbar;
-    private ImageButton SendMessageButton;
-    private EditText userMessageInput;
+    private ImageView SendMessageButton;
+    private Button recordButton;
+    private TextInputEditText userMessageInput;
     private ScrollView mScrollView;
     private TextView displayTextMessages;
 
@@ -42,7 +58,11 @@ public class GroupChatActivity extends AppCompatActivity
 
     private String currentGroupName, currentUserID, currentUserName, currentDate, currentTime;
 
+    private MediaRecorder recorder;
+    private String fileName = null;
+    private static final String LOG_TAG = "";
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -67,6 +87,50 @@ public class GroupChatActivity extends AppCompatActivity
 
         GetUserInfo();
 
+        userMessageInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String value = userMessageInput.getEditableText().toString();
+                if(!value.matches("")){
+                    SendMessageButton.setImageDrawable(getDrawable(R.drawable.ic_next));
+                } else{
+                    SendMessageButton.setImageDrawable(getDrawable(R.drawable.ic_mic));
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+//        fileName = "${externalCacheDir.absolutePath}/audiorecordtest.3gp";
+        fileName = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "/recorded_audio.3gp";
+//        fileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+//        fileName += "/recorded_audio.3gp";
+
+
+        recordButton.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    startRecording();
+                    userMessageInput.setText("Recording..");
+                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                    stopRecording();
+                    userMessageInput.setText("");
+                }
+                return false;
+            }
+        });
 
         SendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +145,31 @@ public class GroupChatActivity extends AppCompatActivity
         });
     }
 
+    private void startRecording() {
+        recorder = new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(fileName);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            recorder.prepare();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+
+        recorder.start();
+    }
+
+    private void stopRecording() {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+        uploadAudio();
+    }
+
+    private void uploadAudio() {
+    }
 
 
     @Override
@@ -127,14 +216,15 @@ public class GroupChatActivity extends AppCompatActivity
 
     private void InitializeFields()
     {
-        mToolbar = (Toolbar) findViewById(R.id.group_chat_bar_layout);
+        mToolbar = findViewById(R.id.group_chat_bar_layout);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(currentGroupName);
 
-        SendMessageButton = (ImageButton) findViewById(R.id.send_message_button);
-        userMessageInput = (EditText) findViewById(R.id.input_group_message);
-        displayTextMessages = (TextView) findViewById(R.id.group_chat_text_display);
-        mScrollView = (ScrollView) findViewById(R.id.my_scroll_view);
+        SendMessageButton = findViewById(R.id.send_message_button);
+        userMessageInput = findViewById(R.id.input_group_message);
+        displayTextMessages = findViewById(R.id.group_chat_text_display);
+        mScrollView = findViewById(R.id.my_scroll_view);
+        recordButton = findViewById(R.id.record_button);
     }
 
 
