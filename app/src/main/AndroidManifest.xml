@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Consult">
-        <activity android:name=".ui.PagerActivty"></activity>
+        <activity android:name=".ui.PagerActivty">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.consult.ui.Dashboard" />
+        </activity>
         <activity
             android:name=".ui.GroupChatActivity"
             android:theme="@style/NoActionBarTheme">

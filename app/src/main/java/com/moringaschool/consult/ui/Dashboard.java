@@ -42,6 +42,10 @@ public class Dashboard extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), TextActivity.class));
                         overridePendingTransition(0,0);
                         return true;
+                    case R.id.pageM:
+                        startActivity(new Intent(getApplicationContext(), PagerActivty.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
