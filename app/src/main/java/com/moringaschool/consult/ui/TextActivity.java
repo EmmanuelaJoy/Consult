@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,12 +79,10 @@ public class TextActivity extends AppCompatActivity {
         imageView = findViewById(R.id.profile_image);
         username = findViewById(R.id.usernameonmainactivity);
 
-
-
-//        toolbar = findViewById(R.id.toolbarmain);
-//        this.setSupportActionBar(toolbar);
-//        this.getSupportActionBar().setTitle("");
-//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar = findViewById(R.id.toolbarmain);
+        this.setSupportActionBar(toolbar);
+        this.getSupportActionBar();
+        this.getSupportActionBar().setTitle("");
 
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
@@ -296,6 +296,5 @@ public class TextActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
 }
