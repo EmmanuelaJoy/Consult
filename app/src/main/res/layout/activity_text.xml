@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +30,6 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"/>
 
-
         </androidx.appcompat.widget.Toolbar>
 
 
@@ -43,7 +41,6 @@
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicator="@color/colorAccent"
             app:tabTextColor="@color/colorSecondaryText"/>
-
 
 
     <androidx.viewpager.widget.ViewPager

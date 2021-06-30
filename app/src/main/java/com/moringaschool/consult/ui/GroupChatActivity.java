@@ -1,6 +1,5 @@
 package com.moringaschool.consult.ui;
 
-
 import android.annotation.SuppressLint;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -16,6 +15,7 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -24,7 +24,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
 import com.google.android.material.textfield.TextInputEditText;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -34,8 +36,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.consult.R;
 
+
 import java.io.File;
 import java.io.IOException;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -58,11 +62,13 @@ public class GroupChatActivity extends AppCompatActivity
 
     private String currentGroupName, currentUserID, currentUserName, currentDate, currentTime;
 
+
     private MediaRecorder recorder;
     private String fileName = null;
     private static final String LOG_TAG = "";
 
     @SuppressLint("ClickableViewAccessibility")
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -146,6 +152,7 @@ public class GroupChatActivity extends AppCompatActivity
         });
     }
 
+
     private void startRecording() {
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -171,6 +178,7 @@ public class GroupChatActivity extends AppCompatActivity
 
     private void uploadAudio() {
     }
+
 
 
     @Override
@@ -217,6 +225,7 @@ public class GroupChatActivity extends AppCompatActivity
 
     private void InitializeFields()
     {
+
         mToolbar = findViewById(R.id.group_chat_bar_layout);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(currentGroupName);
@@ -226,6 +235,7 @@ public class GroupChatActivity extends AppCompatActivity
         displayTextMessages = findViewById(R.id.group_chat_text_display);
         mScrollView = findViewById(R.id.my_scroll_view);
         recordButton = findViewById(R.id.record_button);
+
     }
 
 

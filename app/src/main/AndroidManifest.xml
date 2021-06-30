@@ -19,12 +19,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.TextActivity" />
         </activity>
+
         <activity
             android:name=".ui.SplashScreen"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,28 +40,36 @@
         </activity>
 
         <activity android:name=".ui.WeekViewActivity" />
+
         <activity android:name=".ui.EventEditActivity" />
+
         <activity android:name=".ui.MessageActivity" android:theme="@style/NoActionBarTheme">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.TextActivity" />
         </activity>
+
         <activity android:name=".ui.UserDetails">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.UserProfile" />
         </activity>
+
         <activity android:name=".ui.UserProfile">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.Dashboard" />
         </activity>
+
         <activity android:name=".ui.Dashboard" />
         <activity android:name=".ui.TextActivity" android:theme="@style/NoActionBarTheme">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.Dashboard" />
         </activity>
+
         <activity
             android:name=".ui.LoginActivity"
             android:theme="@style/NoActionBarTheme" />
