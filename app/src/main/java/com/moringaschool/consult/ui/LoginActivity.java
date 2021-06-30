@@ -54,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.loginpage);
 
-//        AdminLink = (TextView) findViewById(R.id.admin_panel_link);
-//        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+
         mEmail = findViewById(R.id.login_email);
         mPassword = findViewById(R.id.login_password);
         mPhone = findViewById(R.id.reg_phone);
@@ -252,7 +252,6 @@ public class LoginActivity extends AppCompatActivity {
 
 //             }
 //         });    }
-
     }
 
 }

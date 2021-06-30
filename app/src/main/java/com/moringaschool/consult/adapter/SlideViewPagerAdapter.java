@@ -1,5 +1,7 @@
 package com.moringaschool.consult.adapter;
 
+
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -79,14 +81,14 @@ public class SlideViewPagerAdapter extends PagerAdapter {
             case 0:
                 skip.setText("Skip Intro");
                 back.setVisibility(View.INVISIBLE);
-               lottie.setAnimation(R.raw.hworkers);
-               title.setText("Welcome to Consult");
-               description.setText("A clinical communications and collaboration platform that coordinates activities and data flow between health workers.");
-               button.setText("Next");
-               disc1.setImageResource(R.drawable.selected);
-               disc2.setImageResource(R.drawable.unselected);
-               disc3.setImageResource(R.drawable.unselected);
-               break;
+                lottie.setAnimation(R.raw.hworkers);
+                title.setText("Welcome to Consult");
+                description.setText("A clinical communications and collaboration platform that coordinates activities and data flow between health workers.");
+                button.setText("Next");
+                disc1.setImageResource(R.drawable.selected);
+                disc2.setImageResource(R.drawable.unselected);
+                disc3.setImageResource(R.drawable.unselected);
+                break;
             case 1:
                 lottie.setAnimation(R.raw.healthsymbols);
                 title.setText("Key Features");

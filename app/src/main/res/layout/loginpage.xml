@@ -57,7 +57,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     app:boxBackgroundMode="outline"
                     app:startIconDrawable="@drawable/ic_mail_outline"
                     app:endIconMode="clear_text"
@@ -131,7 +131,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp">
+                    android:layout_margin="8dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"

@@ -9,6 +9,7 @@
     <color name="colorSecondaryText">#FFFFFF</color>
     <color name="colorDivider">#877E7F</color>
     <color name="colorButtons">#C4C4C4</color>
+    <color name="colorValid">#8bc34a</color>
     <color name="colorTransparent">#00000000</color>
     <!-- Theme colors -->
     <color name="colorPrimaryVariant">#203354</color>

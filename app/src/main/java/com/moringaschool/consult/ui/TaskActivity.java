@@ -69,7 +69,7 @@ public class TaskActivity extends AppCompatActivity implements OnDialogCloseList
     private void showData(){
         query = firestore.collection("task").orderBy("time" , Query.Direction.DESCENDING);
 
-        listenerRegistration = query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 for (DocumentChange documentChange : value.getDocumentChanges()){
@@ -80,7 +80,7 @@ public class TaskActivity extends AppCompatActivity implements OnDialogCloseList
                         adapter.notifyDataSetChanged();
                     }
                 }
-                listenerRegistration.remove();
+
 
             }
         });

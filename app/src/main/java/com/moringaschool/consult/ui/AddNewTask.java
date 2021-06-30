@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,14 +19,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,8 +39,8 @@ public class AddNewTask  extends BottomSheetDialogFragment {
     public static final String TAG = "AddNewTask";
 
     private TextView setDueDate;
-    private TextInputEditText mTaskEdit;
-    private MaterialButton mSaveBtn;
+    private EditText mTaskEdit;
+    private Button mSaveBtn;
     private FirebaseFirestore firestore;
     private Context context;
     private String dueDate = "";
@@ -100,11 +96,10 @@ public class AddNewTask  extends BottomSheetDialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().equals("")){
                     mSaveBtn.setEnabled(false);
-                    mSaveBtn.setBackgroundColor(Color.parseColor("#395A93"));
+                    mSaveBtn.setBackgroundColor(Color.GRAY);
                 }else{
                     mSaveBtn.setEnabled(true);
                     mSaveBtn.setBackgroundColor(Color.DKGRAY);
-
                 }
             }
 
