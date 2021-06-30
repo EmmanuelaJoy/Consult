@@ -27,7 +27,7 @@ public class BaseApplication extends Application {
             NotificationChannel channel2 = new NotificationChannel(
                     CHANNEL_2_ID,
                     "Channel2",
-                    NotificationManager.IMPORTANCE_HIGH
+                    NotificationManager.IMPORTANCE_LOW
             );
             channel2.setDescription("This is channel 2");
 
