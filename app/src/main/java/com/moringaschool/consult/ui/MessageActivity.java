@@ -6,6 +6,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,7 +47,8 @@ public class MessageActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
 
     EditText et_message;
-    Button send;
+    ImageView send;
+
 
     DatabaseReference reference;
 
@@ -59,10 +63,10 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-//        toolbar = findViewById(R.id.toolbar_message);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar = findViewById(R.id.toolbar_message);
+        this.setSupportActionBar(toolbar);
+        this.getSupportActionBar();
+        this.getSupportActionBar().setTitle("");
 
         imageViewOnToolbar = findViewById(R.id.profile_image_toolbar_message);
         usernameonToolbar = findViewById(R.id.username_ontoolbar_message);

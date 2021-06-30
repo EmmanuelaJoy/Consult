@@ -153,7 +153,7 @@
                         app:startIconTint="@color/colorButtons">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/reg_fullname"
+                            android:id="@+id/fullname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/blue_btn"
@@ -177,7 +177,7 @@
                         app:startIconTint="@color/colorButtons">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/reg_email"
+                            android:id="@+id/email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/blue_btn"
@@ -202,7 +202,7 @@
                         app:prefixTextColor="@color/colorAccent">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/reg_phone"
+                            android:id="@+id/phone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/blue_btn"
@@ -226,7 +226,7 @@
                         app:startIconTint="@color/colorButtons">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/reg_password"
+                            android:id="@+id/password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/blue_btn"

@@ -6,20 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbarmain"
-            android:theme="@style/Theme.Consult"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
             app:popupTheme="@style/MenuStyle"
+            app:navigationIcon="?attr/actionModeCloseDrawable"
             android:background="@color/colorPrimary">
-
-
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
@@ -35,10 +30,6 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"/>
 
-
-
-
-
         </androidx.appcompat.widget.Toolbar>
 
 
@@ -47,16 +38,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/tablayout"
             android:background="@color/colorPrimary"
-            app:tabSelectedTextColor="@android:color/white"
-            app:tabIndicator="@android:color/white"
-            app:tabTextColor="@android:color/white"/>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-
-
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabIndicator="@color/colorAccent"
+            app:tabTextColor="@color/colorSecondaryText"/>
 
 
     <androidx.viewpager.widget.ViewPager
