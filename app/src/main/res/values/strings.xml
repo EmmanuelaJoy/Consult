@@ -3,4 +3,8 @@
     <string name="forward">forward</string>
     <string name="back">back</string>
     <string name="app_name">Consʌlt</string>
+<!--    <string name="default_notification_channel_id">Channel id</string>-->
+    <!--    <item name="sendBtn" type="id">Send Button</item>-->
+<!--    <item name="senderEt" type="id">Sender Et</item>-->
+<!--    <item name="msgEt" type="id">Message Et</item>-->
 </resources>
