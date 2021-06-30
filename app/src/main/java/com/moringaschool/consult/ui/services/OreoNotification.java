@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi;
 
 import com.moringaschool.consult.R;
 
-public class OreoNotification extends MyFirebaseMessaging {
+public class OreoNotification extends ContextWrapper {
 
     private static final String CHANNEL_ID = "com.moringaschool.consult";
     private static final String CHANNEL_NAME = "CONSULT";
@@ -22,13 +22,13 @@ public class OreoNotification extends MyFirebaseMessaging {
     public NotificationManager notificationManager;
 
 
-//    public OreoNotification(Context base) {
-//        super(base);
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            createChannel();
-//        }
-//    }
+    public OreoNotification(Context base) {
+        super(base);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createChannel();
+        }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void  createChannel() {
