@@ -22,14 +22,14 @@ public class BaseApplication extends Application {
                     "Channel1",
                     NotificationManager.IMPORTANCE_HIGH
             );
-            channel1.setDescription("This is channel 1");
+            channel1.setDescription("Urgent Alerts");
 
             NotificationChannel channel2 = new NotificationChannel(
                     CHANNEL_2_ID,
                     "Channel2",
                     NotificationManager.IMPORTANCE_LOW
             );
-            channel2.setDescription("This is channel 2");
+            channel2.setDescription("Non-urgent Alerts");
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel1);

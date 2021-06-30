@@ -106,6 +106,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="CHANNEL_ID" />
+
+        <receiver android:name=".ui.Model.NotificationReceiver"/>
+
     </application>
 
 </manifest>

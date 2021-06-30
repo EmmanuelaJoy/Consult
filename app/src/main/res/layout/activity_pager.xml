@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="sendOnChannel2"
-            android:text="Not Urgent"
+            android:text="Non-Urgent ALert"
             android:textColor="@color/colorSecondaryText"/>
 
     </LinearLayout>
