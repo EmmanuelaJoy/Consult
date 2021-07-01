@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import com.google.firebase.database.Query;
 import com.moringaschool.consult.R;
 
 import android.content.DialogInterface;
@@ -117,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
 
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override

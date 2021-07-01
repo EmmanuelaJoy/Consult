@@ -8,6 +8,7 @@ import android.os.Build;
 public class BaseApplication extends Application {
     public static final String CHANNEL_1_ID = "channel1";
     public static final String  CHANNEL_2_ID = "channel2";
+    public static final String  CHANNEL_3_ID = "channel3";
 
     @Override
     public void onCreate() {
@@ -31,9 +32,17 @@ public class BaseApplication extends Application {
             );
             channel2.setDescription("Non-urgent Alerts");
 
+            NotificationChannel channel3 = new NotificationChannel(
+                    CHANNEL_3_ID,
+                    "Channel3",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            channel3.setDescription("Message Notifications");
+
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel1);
             notificationManager.createNotificationChannel(channel2);
+            notificationManager.createNotificationChannel(channel3);
         }
     }
 }
