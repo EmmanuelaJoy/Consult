@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import com.google.firebase.database.Query;
 import com.moringaschool.consult.R;
 
 import android.content.DialogInterface;
@@ -41,6 +42,7 @@ import io.paperdb.Paper;
 public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText mEmail,mPassword;
+    TextInputEditText mPhone;
     MaterialButton mLoginBtn;
 
     TextView mCreateBtn,forgotTextLink,AdminLink,NotAdminLink;
@@ -59,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mEmail = findViewById(R.id.login_email);
         mPassword = findViewById(R.id.login_password);
+        mPhone = findViewById(R.id.reg_phone);
 
         progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
@@ -77,17 +80,17 @@ public class LoginActivity extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
 
 
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is Required.");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Password is Required.");
                     return;
                 }
 
-                if(password.length() < 6){
+                if (password.length() < 6) {
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
@@ -96,15 +99,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 // authenticate the user
 
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), Dashboard.class));
                             progressBar.setVisibility(View.GONE);
-                        }else {
+                        } else {
                             Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
@@ -116,10 +119,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
 
@@ -166,7 +170,90 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-    }
+//         AdminLink.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View view)
+//             {
+//                 mLoginBtn.setText("Login Admin");
+//                 AdminLink.setVisibility(View.INVISIBLE);
+//                 NotAdminLink.setVisibility(View.VISIBLE);
+//                 parentDbName = "Admins";
+//             }
+//         });
+//         NotAdminLink.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View view)
+//             {
+//                 mLoginBtn.setText("Login");
+//                 AdminLink.setVisibility(View.VISIBLE);
+//                 NotAdminLink.setVisibility(View.INVISIBLE);
+//                 parentDbName = "Users";
+//             }
+//         });
+//     }
 
+
+//     private void AllowAccessToAccount(final String phone, final String password)
+//     {
+//         if(chkBoxRememberMe.isChecked())
+//         {
+//             Paper.book().write(Prevalent.UserPhoneKey, phone);
+//             Paper.book().write(Prevalent.UserPasswordKey, password);
+//         }
+
+//         final DatabaseReference RootRef;
+//         RootRef = FirebaseDatabase.getInstance().getReference();
+
+
+//         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//             @Override
+//             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+//             {
+//                 if (dataSnapshot.child(parentDbName).child(phone).exists())
+//                 {
+//                     Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
+
+//                     if (usersData.getPhone().equals(phone))
+//                     {
+//                         if (usersData.getPassword().equals(password))
+//                         {
+//                             if (parentDbName.equals("Admins"))
+//                             {
+//                                 Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+//                                 progressBar.setVisibility(View.GONE);
+
+//                                 Intent intent = new Intent(LoginActivity.this, TaskActivity.class);
+//                                 startActivity(intent);
+//                             }
+//                             else if (parentDbName.equals("Users"))
+//                             {
+//                                 Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+//                                 progressBar.setVisibility(View.GONE);
+
+//                                 Intent intent = new Intent(LoginActivity.this, TasksActivity.class);
+//                                 Prevalent.currentOnlineUser = usersData;
+//                                 startActivity(intent);
+//                             }
+//                         }
+//                         else
+//                         {
+//                             progressBar.setVisibility(View.GONE);
+//                             Toast.makeText(LoginActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+//                         }
+//                     }
+//                 }
+//                 else
+//                 {
+//                     Toast.makeText(LoginActivity.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
+//                     progressBar.setVisibility(View.GONE);
+//                 }
+//             }
+
+//             @Override
+//             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+//             }
+//         });    }
+    }
 
 }
