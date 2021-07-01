@@ -3,6 +3,7 @@ package com.moringaschool.consult.ui.Model;
 public class Chats {
 
     String sender, reciever, message;
+    private long timestamp;
     boolean isseen;
 
 
@@ -11,12 +12,20 @@ public class Chats {
         this.reciever = reciever;
         this.message = message;
         this.isseen = isseen;
+        timestamp = System.currentTimeMillis();
     }
 
 
     public Chats() {
     }
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public String getSender() {
         return sender;

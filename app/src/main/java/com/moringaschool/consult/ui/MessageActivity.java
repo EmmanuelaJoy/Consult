@@ -1,5 +1,12 @@
 package com.moringaschool.consult.ui;
 
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +21,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.RemoteInput;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +47,8 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.moringaschool.consult.ui.Model.BaseApplication.CHANNEL_2_ID;
+
 public class MessageActivity extends AppCompatActivity {
 
 
@@ -52,7 +64,7 @@ public class MessageActivity extends AppCompatActivity {
 
     DatabaseReference reference;
 
-    List<Chats> chatsList;
+    public static List<Chats> chatsList;
     MessageAdapter messageAdapter;
     RecyclerView recyclerView;
     ValueEventListener seenlistener;
@@ -68,6 +80,7 @@ public class MessageActivity extends AppCompatActivity {
         this.getSupportActionBar();
         this.getSupportActionBar().setTitle("");
 
+
         imageViewOnToolbar = findViewById(R.id.profile_image_toolbar_message);
         usernameonToolbar = findViewById(R.id.username_ontoolbar_message);
 
@@ -78,6 +91,29 @@ public class MessageActivity extends AppCompatActivity {
 
         send = findViewById(R.id.send_messsage_btn);
         et_message = findViewById(R.id.edit_message_text);
+
+        et_message.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String value = et_message.getEditableText().toString();
+                if(!value.matches("")){
+                    send.setImageDrawable(getDrawable(R.drawable.ic_next));
+                } else{
+                    send.setImageDrawable(getDrawable(R.drawable.ic_mic));
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         myid = firebaseUser.getUid(); // my id or the one who is loggedin
@@ -173,6 +209,7 @@ public class MessageActivity extends AppCompatActivity {
                 et_message.setText(" ");
 
 
+
             }
         });
 
@@ -180,7 +217,6 @@ public class MessageActivity extends AppCompatActivity {
 
 
     }
-
 
 
     private void seenMessage(final String friendid) {
