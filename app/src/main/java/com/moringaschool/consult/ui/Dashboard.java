@@ -12,7 +12,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -54,9 +57,10 @@ public class Dashboard extends AppCompatActivity {
     List<String> mGroupList;
 
     BottomNavigationView bottomNavigationView;
-    TextView title;
+    TextView title, departmentName;
+
     ImageView imageView;
-    RecyclerView recyclerView, groupRecyclerView;
+    RecyclerView recyclerView;
     DatabaseReference reference;
     DatabaseReference GroupRef;
     FirebaseUser user;
@@ -64,6 +68,14 @@ public class Dashboard extends AppCompatActivity {
     MyGroups myGroups;
     LinearLayoutManager layoutManager;
     LinearLayoutManager groupLayoutManager;
+
+    private ListView list_view;
+    private ArrayAdapter<String> arrayAdapter,groupArrayAdapter;
+    private ArrayList<String> list_of_groups = new ArrayList<>();
+
+    public Dashboard() {
+        // Required empty public constructor
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +93,11 @@ public class Dashboard extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         displayusers();
 
-        groupRecyclerView = findViewById(R.id.groupsRecyclerView);
-        groupRecyclerView.setHasFixedSize(true);
+
         groupLayoutManager =new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        groupRecyclerView.setLayoutManager(groupLayoutManager);
-        displayGroups();
+
+//        displayGroups();
+        GroupRef = FirebaseDatabase.getInstance().getReference().child("Groups").child("groupName");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -148,51 +160,71 @@ public class Dashboard extends AppCompatActivity {
                 return false;
             }
         });
+        GroupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
+
+        RetrieveAndDisplayGroups();
+        IntializeFields();
+
+
+
+
+
+
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
+            {
+                String currentGroupName = adapterView.getItemAtPosition(position).toString();
+
+                Intent groupChatIntent = new Intent(Dashboard.this, GroupChatActivity.class);
+                groupChatIntent.putExtra("groupName" , currentGroupName);
+                startActivity(groupChatIntent);
+            }
+        });
+
+
 
     }
 
-    private void displayGroups(){
 
-        mGroupList = new ArrayList<>();
 
-        GroupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
+    private void IntializeFields()
+    {
+        list_view = (ListView) findViewById(R.id.list_view_dashboard);
+        groupArrayAdapter = new ArrayAdapter<String>(Dashboard.this, android.R.layout.simple_list_item_1, list_of_groups);
+        list_view.setAdapter(groupArrayAdapter);
+    }
+
+
+
+
+    private void RetrieveAndDisplayGroups()
+    {
+        list_of_groups = new ArrayList<>();
         GroupRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                mGroupList.clear();
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot)
+            {
+                Set<String> set = new HashSet<>();
 
-                for (DataSnapshot ds: snapshot.getChildren()) {
-
-                    Set<String> set = new HashSet<>();
-                    Iterator iterator = ds.getChildren().iterator();
-
-                    while (iterator.hasNext())
-                    {
-                        set.add(((DataSnapshot)iterator.next()).getKey());
-                    }
-
-                    mGroupList.clear();
-                    mGroupList.addAll(set);
-                    myGroups = new MyGroups(mGroupList);
-                    groupRecyclerView.setAdapter(myGroups);
-
-//                    Groups group = ds.getValue(Groups.class);
-//
-//                    mGroupList.add(group);
-//
-//                    myGroups = new MyGroups(mGroupList);
-//                    groupRecyclerView.setAdapter(myGroups);
-
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    set.add(snapshot.getKey());
                 }
 
+                list_of_groups.clear();
+                list_of_groups.addAll(set);
+                groupArrayAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
 
             }
         });
     }
+
+
+
 
     private void displayusers() {
         mUsersList = new ArrayList<>();

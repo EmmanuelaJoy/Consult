@@ -6,34 +6,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:outlineAmbientShadowColor="#fff"
+        android:theme="?attr/actionBarTheme">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+
+        <TextView
+            android:id="@+id/usernameonmainactivity"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbarmain"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:popupTheme="@style/MenuStyle"
-            app:navigationIcon="?attr/actionModeCloseDrawable"
-            android:background="@color/colorPrimary">
+            android:layout_marginLeft="25dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/profile_image"/>
+    </androidx.appcompat.widget.Toolbar>
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:id="@+id/usernameonmainactivity"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
-
-        <com.google.android.material.tabs.TabLayout
+    <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tablayout"
