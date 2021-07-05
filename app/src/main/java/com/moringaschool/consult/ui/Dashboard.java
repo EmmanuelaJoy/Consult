@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.consult.R;
 import com.moringaschool.consult.ui.Adapter.MyNetwork;
+import com.moringaschool.consult.ui.Adapter.UserAdapter;
 import com.moringaschool.consult.ui.Model.Chatslist;
 import com.moringaschool.consult.ui.Model.Users;
 
@@ -71,33 +72,7 @@ public class Dashboard extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        reference1 = firebaseDatabase.getReference("Users");
-        mUsersList = new ArrayList<>();
-//        reference1.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//                Users users = snapshot.getValue(Users.class);
-//                mUsersList.add(users);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//            }
-//        });
-        myNetworkAdapter = new MyNetwork(mUsersList);
-        recyclerView.setAdapter(myNetworkAdapter);
-
-
-//        myNetworkAdapter = new MyNetwork(Users.class, R.layout.my_network, MyNetwork.NetworkViewHolder.class, reference1);
-//        recyclerView.setAdapter(myNetworkAdapter);
-
-
-
-//        layoutManager = new LinearLayoutManager(this);
-//        recipesRecyclerView.setLayoutManager(layoutManager);
-//        mRecipeListAdapter = new RecipeListAdapter(this, allRecipesClassList);
-//        recipesRecyclerView.setAdapter(mRecipeListAdapter);
+        displayusers();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -110,7 +85,6 @@ public class Dashboard extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 Users users = snapshot.getValue(Users.class);
-                mUsersList.add(users);
 
                 title.setText("Welcome\n" + users.getUsername());
 
@@ -159,6 +133,40 @@ public class Dashboard extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+    }
+    private void displayusers() {
+        mUsersList = new ArrayList<>();
+
+        DatabaseReference reference  = FirebaseDatabase.getInstance().getReference("Users");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mUsersList.clear();
+
+                for (DataSnapshot ds: snapshot.getChildren()) {
+
+                    Users users = ds.getValue(Users.class);
+
+                    user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (!users.getId().equals(user.getUid())) {
+                        mUsersList.add(users);
+                    }
+
+                    myNetworkAdapter = new MyNetwork(mUsersList);
+                    recyclerView.setAdapter(myNetworkAdapter);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
