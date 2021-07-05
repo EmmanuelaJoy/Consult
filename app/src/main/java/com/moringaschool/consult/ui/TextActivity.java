@@ -82,7 +82,7 @@ public class TextActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarmain);
         this.setSupportActionBar(toolbar);
         this.getSupportActionBar();
-        this.getSupportActionBar().setTitle("");
+        this.getSupportActionBar().setCustomView(R.layout.custom_toolbar);
 
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
@@ -102,6 +102,14 @@ public class TextActivity extends AppCompatActivity {
 
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(TextActivity.this,Dashboard.class);
+                startActivity(intent);
+            }
+        });
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
