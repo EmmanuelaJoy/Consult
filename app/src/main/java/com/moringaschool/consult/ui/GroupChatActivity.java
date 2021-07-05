@@ -103,7 +103,7 @@ public class GroupChatActivity extends AppCompatActivity
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String value = userMessageInput.getEditableText().toString();
                 if(!value.matches("")){
-                    SendMessageButton.setImageDrawable(getDrawable(R.drawable.ic_next));
+                    SendMessageButton.setImageDrawable(getDrawable(R.drawable.ic_send));
                 } else{
                     SendMessageButton.setImageDrawable(getDrawable(R.drawable.ic_mic));
                 }

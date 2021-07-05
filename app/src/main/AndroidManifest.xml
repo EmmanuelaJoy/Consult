@@ -76,7 +76,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.moringaschool.consult.ui.Dashboard" />
         </activity>
-        <activity android:name=".ui.Dashboard" />
+        <activity android:name=".ui.Dashboard" android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".ui.TextActivity"
             android:theme="@style/NoActionBarTheme">

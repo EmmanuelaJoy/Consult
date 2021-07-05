@@ -102,7 +102,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String value = et_message.getEditableText().toString();
                 if(!value.matches("")){
-                    send.setImageDrawable(getDrawable(R.drawable.ic_next));
+                    send.setImageDrawable(getDrawable(R.drawable.ic_send));
                 } else{
                     send.setImageDrawable(getDrawable(R.drawable.ic_mic));
                 }
