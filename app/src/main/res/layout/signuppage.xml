@@ -127,6 +127,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
+                    android:hint="Profession"
+                    app:boxBackgroundMode="outline"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorButtons"
+                    app:startIconDrawable="@drawable/ic_work_outline"
+                    app:startIconTint="@color/colorButtons">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_profession"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/blue_btn"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="text"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
                     android:hint="Password"
                     app:boxBackgroundMode="outline"
                     app:endIconMode="password_toggle"

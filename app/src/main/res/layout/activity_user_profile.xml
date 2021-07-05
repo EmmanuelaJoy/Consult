@@ -57,13 +57,13 @@
                         android:orientation="vertical"
                         android:elevation="12dp">
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profileImage"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:src="@drawable/ic_account"
-                            app:tint="@color/colorPrimaryLight"
-                            android:elevation="1dp"/>
+                            app:civ_border_color="@color/colorSecondaryText"
+                            app:civ_border_width="1dp"/>
 
                         <TextView
                             android:id="@+id/displayName"
@@ -75,7 +75,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/displayUsername"
+                            android:id="@+id/displayProfession"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_regular"
