@@ -50,7 +50,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
-    TextInputEditText mFullName, mEmail, mPassword, mPhone;
+    TextInputEditText mFullName, mEmail, mPassword, mPhone, mProfession;
 
     Button mRegisterBtn;
     TextView mCreateTxt;
@@ -73,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         mFullName = findViewById(R.id.reg_fullname);
         mEmail = findViewById(R.id.reg_email);
         mPassword = findViewById(R.id.reg_password);
+        mProfession = findViewById(R.id.reg_profession);
         mPhone = findViewById(R.id.reg_phone);
         mRegisterBtn = findViewById(R.id.reg_btn);
         mLoginBtn = findViewById(R.id.loginbtn);
@@ -111,12 +112,13 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validateFullNames() || !validateEmail() || !validatePhoneNumber() || !validatePassword()) {
+                if (!validateFullNames() || !validateEmail() || !validateProfession() || !validatePhoneNumber() || !validatePassword()) {
                     return;
                 } else {
                     final String email = mEmail.getText().toString().trim();
                     String password = mPassword.getText().toString().trim();
                     final String fullName = mFullName.getText().toString();
+                    final String profession = mProfession.getText().toString();
                     final String phone = mPhone.getText().toString();
 
                     progressBar.setVisibility(View.VISIBLE);
@@ -135,6 +137,9 @@ public class RegisterActivity extends AppCompatActivity {
                                     HashMap<String, Object> hashMap = new HashMap<>();
                                     hashMap.put("username", fullName);
                                     hashMap.put("email", email);
+                                    hashMap.put("profession", profession);
+                                    hashMap.put("phone", phone);
+                                    hashMap.put("password", password);
                                     hashMap.put("id", user.getUid());
                                     hashMap.put("imageURL", "default");
                                     hashMap.put("status", "offline");
@@ -190,6 +195,17 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }else{
             mFullName.setError(null);
+            return true;
+        }
+    }
+
+    private Boolean validateProfession() {
+        String value = mProfession.getEditableText().toString();
+        if (value.isEmpty()){
+            mProfession.setError("Field cannot be empty");
+            return false;
+        }else{
+            mProfession.setError(null);
             return true;
         }
     }

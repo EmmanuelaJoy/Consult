@@ -30,32 +30,40 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.consult.R;
+import com.moringaschool.consult.ui.Adapter.MyGroups;
 import com.moringaschool.consult.ui.Adapter.MyNetwork;
+import com.moringaschool.consult.ui.Adapter.UserAdapter;
 import com.moringaschool.consult.ui.Model.Chatslist;
+import com.moringaschool.consult.ui.Model.Groups;
 import com.moringaschool.consult.ui.Model.Users;
 
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class Dashboard extends AppCompatActivity {
 
     List<Users> mUsersList;
+    List<String> mGroupList;
 
     BottomNavigationView bottomNavigationView;
     TextView title;
     ImageView imageView;
-    RecyclerView recyclerView;
+    RecyclerView recyclerView, groupRecyclerView;
     DatabaseReference reference;
-    DatabaseReference reference1;
+    DatabaseReference GroupRef;
     FirebaseUser user;
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     MyNetwork myNetworkAdapter;
+    MyGroups myGroups;
     LinearLayoutManager layoutManager;
+    LinearLayoutManager groupLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,33 +79,13 @@ public class Dashboard extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//        reference1 = firebaseDatabase.getReference("Users");
-        mUsersList = new ArrayList<>();
-//        reference1.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//                Users users = snapshot.getValue(Users.class);
-//                mUsersList.add(users);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//            }
-//        });
-        myNetworkAdapter = new MyNetwork(mUsersList);
-        recyclerView.setAdapter(myNetworkAdapter);
+        displayusers();
 
-
-//        myNetworkAdapter = new MyNetwork(Users.class, R.layout.my_network, MyNetwork.NetworkViewHolder.class, reference1);
-//        recyclerView.setAdapter(myNetworkAdapter);
-
-
-
-//        layoutManager = new LinearLayoutManager(this);
-//        recipesRecyclerView.setLayoutManager(layoutManager);
-//        mRecipeListAdapter = new RecipeListAdapter(this, allRecipesClassList);
-//        recipesRecyclerView.setAdapter(mRecipeListAdapter);
+        groupRecyclerView = findViewById(R.id.groupsRecyclerView);
+        groupRecyclerView.setHasFixedSize(true);
+        groupLayoutManager =new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        groupRecyclerView.setLayoutManager(groupLayoutManager);
+        displayGroups();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -110,7 +98,6 @@ public class Dashboard extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 Users users = snapshot.getValue(Users.class);
-                mUsersList.add(users);
 
                 title.setText("Welcome\n" + users.getUsername());
 
@@ -159,6 +146,84 @@ public class Dashboard extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+    }
+
+    private void displayGroups(){
+
+        mGroupList = new ArrayList<>();
+
+        GroupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
+        GroupRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mGroupList.clear();
+
+                for (DataSnapshot ds: snapshot.getChildren()) {
+
+                    Set<String> set = new HashSet<>();
+                    Iterator iterator = ds.getChildren().iterator();
+
+                    while (iterator.hasNext())
+                    {
+                        set.add(((DataSnapshot)iterator.next()).getKey());
+                    }
+
+                    mGroupList.clear();
+                    mGroupList.addAll(set);
+                    myGroups = new MyGroups(mGroupList);
+                    groupRecyclerView.setAdapter(myGroups);
+
+//                    Groups group = ds.getValue(Groups.class);
+//
+//                    mGroupList.add(group);
+//
+//                    myGroups = new MyGroups(mGroupList);
+//                    groupRecyclerView.setAdapter(myGroups);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void displayusers() {
+        mUsersList = new ArrayList<>();
+
+        DatabaseReference reference  = FirebaseDatabase.getInstance().getReference("Users");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mUsersList.clear();
+
+                for (DataSnapshot ds: snapshot.getChildren()) {
+
+                    Users users = ds.getValue(Users.class);
+
+                    user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    if (!users.getId().equals(user.getUid())) {
+                        mUsersList.add(users);
+                    }
+
+                    myNetworkAdapter = new MyNetwork(mUsersList);
+                    recyclerView.setAdapter(myNetworkAdapter);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

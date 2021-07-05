@@ -42,7 +42,7 @@ public class MyNetwork extends RecyclerView.Adapter<MyNetwork.NetworkViewHolder>
     @Override
     public void onBindViewHolder(@NonNull MyNetwork.NetworkViewHolder holder, int position) {
         holder.mName.setText(usersList.get(position).getUsername());
-//        holder.mProfession.setText(usersList.get(position).getStatus());
+        holder.mProfession.setText(usersList.get(position).getProfession());
         if(usersList.get(position).getImageURL() != "") {
             Picasso.get().load(usersList.get(position).getImageURL()).into(holder.mImage);
         }
@@ -60,13 +60,13 @@ public class MyNetwork extends RecyclerView.Adapter<MyNetwork.NetworkViewHolder>
 
     public class NetworkViewHolder extends RecyclerView.ViewHolder {
         TextView mName;
-        //        TextView mProfession;
+        TextView mProfession;
         ImageView mImage;
 
         public NetworkViewHolder(View view) {
             super(view);
             mName = view.findViewById(R.id.userName);
-//            mProfession = view.findViewById(R.id.userProfession);
+            mProfession = view.findViewById(R.id.userProfession);
             mImage = view.findViewById(R.id.userImage);
 
         }
