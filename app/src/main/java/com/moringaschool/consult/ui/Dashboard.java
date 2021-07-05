@@ -50,6 +50,7 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class Dashboard extends AppCompatActivity {
 
+    private String allGroupNames;
     List<Users> mUsersList;
     List<String> mGroupList;
 
@@ -153,8 +154,6 @@ public class Dashboard extends AppCompatActivity {
 
     private void displayGroups(){
 
-        mGroupList = new ArrayList<>();
-
         GroupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
         GroupRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -176,12 +175,6 @@ public class Dashboard extends AppCompatActivity {
                     myGroups = new MyGroups(mGroupList);
                     groupRecyclerView.setAdapter(myGroups);
 
-//                    Groups group = ds.getValue(Groups.class);
-//
-//                    mGroupList.add(group);
-//
-//                    myGroups = new MyGroups(mGroupList);
-//                    groupRecyclerView.setAdapter(myGroups);
 
                 }
 
