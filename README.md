@@ -18,7 +18,7 @@
 
 - This feature enables the physician to alert/page their fellow colleagues.
 
-![Splash Image](app/src/main/res/drawable/dashboard.jpg|height=100px)
+<img src="app/src/main/res/drawable/dashboard.jpg" width="200" height="200">
 
 ## Contributors
 
