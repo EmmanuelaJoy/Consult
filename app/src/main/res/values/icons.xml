@@ -1,0 +1,21 @@
+<resources>
+    <string name="fa_icon_user">&#xf007;</string>
+    <string name="fa_icon_user_lock">&#xf502;</string>
+    <string name="fa_icon_envelope">&#xf0e0;</string>
+    <string name="fa_icon_lock">&#xf023;</string>
+    <string name="fa_icon_align_left">&#xf036;</string>
+    <string name="fa_icon_user_cirle">&#xf2bd;</string>
+    <string name="fa_search">&#xf002;</string>
+    <string name="fa_exclamation_circle">&#xf06a;</string>
+    <string name="fa_home">&#xf015;</string>
+    <string name="fa_star">&#xf005;</string>
+    <string name="fa_cog">&#xf013;</string>
+    <string name="fa_question_circle">&#xf059;</string>
+    <string name="fa_info_circle">&#xf05a;</string>
+    <string name="sign_out_alt">&#xf2f5;</string>
+    <string name="fa_file_alt">&#xf15c;</string>
+    <string name="fa_chevron_circle_left">&#xf137;</string>
+    <string name="fa_arrow_circle_right">&#xf0a9;</string>
+    <string name="fa_angle_left">&#xf104;</string>
+    <string name="fa_angle_right">&#xf105;</string>
+</resources>
