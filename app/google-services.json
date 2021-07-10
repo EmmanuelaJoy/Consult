@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "231821256291",
+    "firebase_url": "https://consult-82206-default-rtdb.firebaseio.com",
+    "project_id": "consult-82206",
+    "storage_bucket": "consult-82206.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231821256291:android:1ea1f763bc4ec2a2187a56",
+        "android_client_info": {
+          "package_name": "com.moringaschool.consult"
+        }
+      },
+      "oauth_client": [
+        {
+
+          "client_id": "231821256291-4quor6q1t4d3l1vgd71205t3rr6pdf7o.apps.googleusercontent.com",
+
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+
+          "current_key": "AIzaSyB-SBkwtCJfEpQuPSmPMuCtAv0Hx8Lx-ro"
+
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+
+              "client_id": "231821256291-4quor6q1t4d3l1vgd71205t3rr6pdf7o.apps.googleusercontent.com",
+
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

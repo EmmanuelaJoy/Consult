@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            app:srcCompat="?attr/homeAsUpIndicator"
+            app:tint="@color/colorPrimaryText"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="Skip"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:clickable="true"/>
+
+    </RelativeLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
+        android:layout_width="wrap_content"
+        android:layout_height="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".2"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/hworkers" />
+
+    <LinearLayout
+        android:id="@+id/tab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottie"
+        app:layout_constraintVertical_bias="0">
+
+        <ImageView
+            android:id="@+id/disc1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/selected" />
+
+        <ImageView
+            android:id="@+id/disc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/unselected" />
+
+        <ImageView
+            android:id="@+id/disc3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/unselected" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Welcome to Consult"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab1"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="A clinical communications and collaboration platform that coordinates activities and data flow between health workers."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintVertical_bias=".1"
+        app:layout_constraintWidth_percent=".7" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Next"
+        android:textColor="@color/colorSecondaryText"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
