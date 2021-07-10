@@ -1,18 +1,33 @@
 # Consult
 
 ## Project Description
-<p>Consult is an application specifically created for physicians to bring all communication to one platform. To meet the requested objectives, the app was to include:</p>
-1. A communications feature: 
-- This page offers the physicians a centralized chat page which allows for direct consultations between physicians, creation of multidisciplinary teams to discuss cases as well as offering a medical directory for all physicians in the facility.
-2. A tasks feature:
-- This page offers the physicians an inbuilt calendar that shows the days events, meetings and pending assignments. This feature also extends an alert notification and group tasks to allow physicians to pick up tasks and collaborate with other colleagues.
+
+<p>Consult is an application created to facilitate communication between healthcare workers and enable them to collaborate easily by bringing all clinical communications into one platform.</p>
+
+## APP FEATURES
+
+1. Communication Feature
+
+- This feature offers the physicians a centralized chat page which allows for direct consultations between physicians, creation of multidisciplinary teams to discuss cases as well as offering a medical directory for all physicians in the facility.
+
+2. Task Feature
+
+- This feature offers the physicians an inbuilt calendar that shows the days events, meetings and pending assignments.
+
+3. Alert Feature
+
+- This feature enables the physician to alert/page their fellow colleagues.
+
+![Splash Image](app/src/main/res/drawable/dashboard.jpg)
 
 ## Contributors
+
 [Emmanuela Joy](https://github.com/EmmanuelaJoy) - Scrum Master & Android Developer</p>
 [Lilian Kamau](https://github.com/lilianjerikamau) - Android Developer</p>
-[Inez Mugure](https://github.com/Mugure-Inez ) - Android Developer</p>
+[Inez Mugure](https://github.com/Mugure-Inez) - Android Developer</p>
 
 ## Technologies Used:
+
 - Java
 - Android SDK.
 - Gradle.
@@ -23,4 +38,3 @@
 - Firebase Cloud Messaging
 
 ## [License](https://github.com/EmmanuelaJoy/Dr-Little/blob/main/LICENSE)
-
