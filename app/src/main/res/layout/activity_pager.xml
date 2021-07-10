@@ -29,7 +29,6 @@
                 android:background="@drawable/ic_alert"
                 android:backgroundTint="#DD2D2D" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

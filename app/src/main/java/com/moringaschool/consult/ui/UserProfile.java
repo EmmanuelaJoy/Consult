@@ -53,7 +53,7 @@ public class UserProfile extends AppCompatActivity {
                 Users users = snapshot.getValue(Users.class);
 
                 name.setText(users.getUsername());
-                profession.setText(users.getPassword());
+                profession.setText(users.getProfession());
 
                 if (users.getImageURL().equals("default")) {
 

@@ -4,15 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,15 +25,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.consult.R;
+import com.moringaschool.consult.ui.Model.Users;
 
 import org.jetbrains.annotations.NotNull;
 
 public class UserDetails extends AppCompatActivity {
 
-    TextInputEditText mFullName, mEmail, mPassword, mPhone;
+    TextInputEditText mFullName, mEmail, mPassword, mPhone, mProfession;
+    ImageView mProfile;
     Button update;
     String user_email, user_fullnames, user_phone, user_username, user_password;
     DatabaseReference reference;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +48,14 @@ public class UserDetails extends AppCompatActivity {
         mEmail = findViewById(R.id.email);
         mPhone = findViewById(R.id.phone);
         mPassword = findViewById(R.id.password);
+        mProfession = findViewById(R.id.profession);
+        mProfile = findViewById(R.id.profileImageUD);
+
         update = findViewById(R.id.update);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+        reference.keepSynced(true);
 
         showAllUserData();
         update.setOnClickListener(new View.OnClickListener() {
@@ -55,32 +69,28 @@ public class UserDetails extends AppCompatActivity {
     }
 
     private void showAllUserData() {
-        Intent profileIntent = getIntent();
-        user_email = profileIntent.getStringExtra("email");
-        user_fullnames = profileIntent.getStringExtra("fullnames");
-        user_phone = profileIntent.getStringExtra("phone");
-        user_password = profileIntent.getStringExtra("password");
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        Query checkUser = reference.orderByChild("username").equalTo(user_username);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("RestrictedApi")
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String passwordFromDB= snapshot.child(user_username).child("password").getValue(String.class);
-                    String phoneFromDB = snapshot.child(user_username).child("phone").getValue(String.class);
-                    String emailFromDB= snapshot.child(user_username).child("email").getValue(String.class);
-                    String fullNamesFromDB= snapshot.child(user_username).child("fullnames").getValue(String.class);
-                    mPassword.setText(passwordFromDB);
-                    mPhone.setText(phoneFromDB);
-                    mEmail.setText(emailFromDB);
-                    mFullName.setText(fullNamesFromDB);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                Users users = snapshot.getValue(Users.class);
+
+                mFullName.setText(users.getUsername());
+                mEmail.setText(users.getEmail());
+                mPassword.setText(users.getPassword());
+                mPhone.setText(users.getPhone());
+                mProfession.setText(users.getProfession());
+
+                if (users.getImageURL().equals("default")) {
+                    mProfile.setImageResource(R.drawable.ic_account);
+                } else {
+                    Glide.with(getApplicationContext()).load(users.getImageURL()).into(mProfile);
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
